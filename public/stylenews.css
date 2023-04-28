@@ -1,0 +1,249 @@
+#allNews {
+    display: flex;
+    flex-direction: column;
+}
+
+#news {
+    display: flex;
+    flex-direction: row;
+}
+
+#firstRow {
+    display: flex;
+    flex-direction: column;
+}
+
+#secondRow {
+    display: flex;
+    flex-direction: column;
+}
+
+#thirdRow {
+    display: flex;
+    flex-direction: column;
+}
+
+#news0 {
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 2px lightgray;
+    width: 640px;
+    height: 200px;
+    margin: 10px;
+    background-color: white;
+    position: relative;
+}
+
+#imgnews0 img {
+    border-radius: 10px;
+    padding: 0px;
+    width: 640px;
+    height: 200px;
+    position: relative;
+}
+
+#headnews0 {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    font-size: 15px;
+    color:white
+    ;
+}
+
+#newspaper0 {
+    position: absolute;
+    top: 95px;
+    left: 30px;
+    color: white;
+    font-size: 10px;
+}
+
+#linknews0 :hover {
+    color: blue;
+}
+
+#linknews0 a {
+    position: absolute;
+    top: 160px;
+    left: 560px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 8px;
+    margin-left: 20px;
+}
+
+.newsdiv {
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 2px lightgray;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: white;
+    padding-top: 0px;
+}
+
+.headlines {
+
+    margin-left: 13px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: rgb(32, 32, 108);
+}
+
+.link {
+
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+    font-size: 8px;
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.newstext {
+
+    font-size: 10px;
+    font-weight: bold;
+    padding: 5px;
+    height: 55px;
+}
+
+.newsimg img {
+    border-radius: 10px;
+    padding: 0px;
+    width: 200px;
+    height: 100px;
+}
+
+.newspaperandlink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.newspaper {
+
+    font-size: 10px;
+
+}
+
+.read {
+    font-size: 10px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#read0 {
+    position: absolute;
+    top: 125px;
+    left: 682px;
+}
+
+#news0save {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    color: red;
+    font-size: 30px;
+}
+
+#read1 {
+    position: absolute;
+    top: 342px;
+    left: 242px;
+
+}
+
+#news1save {
+    position: absolute;
+    top: 342px;
+    left: 125px;
+    color: red;
+    font-size: 30px;
+}
+
+#read2 {
+    position: absolute;
+    top: 561px;
+    left: 242px
+}
+
+#news2save {
+    position: absolute;
+    top: 561px;
+    left: 125px;
+    color: red;
+    font-size: 30px;
+}
+
+#read3 {
+    position: absolute;
+    top: 342px;
+    left: 461px;
+
+}
+
+#news3save {
+    position: absolute;
+    top: 342px;
+    left: 345px;
+    color: red;
+    font-size: 30px;
+}
+
+#read4 {
+    position: absolute;
+    top: 561px;
+    left: 461px;
+
+}
+
+#news4save {
+    position: absolute;
+    top: 561px;
+    left: 345px;
+    color: red;
+    font-size: 30px;
+}
+
+#read5 {
+    position: absolute;
+    top: 342px;
+    left: 682px;
+
+}
+
+#news5save {
+    position: absolute;
+    top: 342px;
+    left: 565px;
+    color: red;
+    font-size: 30px;
+}
+
+#read6 {
+    position: absolute;
+    top: 561px;
+    left: 682px;
+
+}
+
+#news6save {
+    position: absolute;
+    top: 561px;
+    left: 565px;
+    color: red;
+    font-size: 30px;
+}
