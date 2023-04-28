@@ -27,3 +27,5 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("date1").innerHTML = date;
   document.getElementById("date1").innerHTML = date;
 });
+
+console.log("hej"); // til at tjekke om js filen er linked til index.html
