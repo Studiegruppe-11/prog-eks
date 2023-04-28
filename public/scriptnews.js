@@ -60,6 +60,13 @@ for (let i = 0; i < 7; i++) {
 
 
 
+
+// ALT UNDER HER ER FRA DEN GAMLE OPGAVE
+
+
+
+
+
   // Hvis man klikker på det røde hjerte, så gemmes nyheden i localstorage
   for (let i = 0; i < 7; i++) {
     document.getElementById(`news${i}save`).addEventListener("click", function () {

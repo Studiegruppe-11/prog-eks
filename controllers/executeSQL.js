@@ -9,34 +9,34 @@ const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
 
 // Variables
-const config = require('../Database/config.json');
- 
+const config = require('../database/config.json');
+
 // Function that returns a promise
 const executeSQL = (query) => {
-  
+
     return new Promise((resolve, reject) => {
 
-      
+
 
         // Connection variable
         const connection = new Connection(config);
 
         // Make a request
-        const request = new Request(query, function(err){
-            if (err){
+        const request = new Request(query, function (err) {
+            if (err) {
                 reject(err);
             }
         });
 
         // When a connection is established
-        connection.on('connect', function(err){
-            if (err){
+        connection.on('connect', function (err) {
+            if (err) {
                 reject(err);
             } else {
 
                 // Log that we connected to the DB
                 console.log("Connected to the database");
-                
+
                 // Execute SQL
                 connection.execSql(request);
             }
@@ -50,16 +50,16 @@ const executeSQL = (query) => {
         let response = {}
 
         // Do something on row
-        request.on('row', function(columns){
+        request.on('row', function (columns) {
             response[counter] = {}
-            columns.forEach(function(column){
+            columns.forEach(function (column) {
                 response[counter][column.metadata.colName] = column.value
             });
             counter += 1
         });
 
         // Resolve when the request is completed
-        request.on('requestCompleted', () =>  {
+        request.on('requestCompleted', () => {
             resolve(response);
         });
 

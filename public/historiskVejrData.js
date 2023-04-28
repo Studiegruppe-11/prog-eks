@@ -1,4 +1,19 @@
 window.addEventListener("DOMContentLoaded", async () => {
+
+
+
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('p');
+    p.id = `vejrData${i}`;
+    document.body.appendChild(p);
+  }
+
+  
+
+
+
+
+
   async function getData() {
     let obj;
 
@@ -17,15 +32,41 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   let data = await getData();
 
+
+
+
+
   let date = [];
   let temp = [];
 
-  for (let index = 1; index < data.length; index++) {
-    console.log(data[index].date);
+  function checkLastWord(i) {
+    var element = document.getElementById(`vejrData${i}`);
+    var text = element.textContent.trim();
+    var words = text.split(" ");
+    var lastWord = words[words.length - 1];
+    if (lastWord == "rain") {
+      words[words.length - 1] = `<iconify-icon icon="wi:rain" class="weathertypeicon"></iconify-icon>`;
+      var newText = words.join(" ");
+      var lastSpaceIndex = text.lastIndexOf(" ");
+      var oldLastWord = text.slice(lastSpaceIndex);
+      var newLastWord = newText.slice(lastSpaceIndex);
+      element.innerHTML = text.replace(oldLastWord, newLastWord);
+    }
   }
+  
+  
+  for (let i = 1; i < 30; i++) {
+    let key = i.toString();
+    document.getElementById(`vejrData${i}`).innerHTML = data[key].temp + "°" + " " + data[key].date + " " + data[key].icon;
+    checkLastWord(i);
+  }
+  
 
-  document.getElementById("date1").innerHTML = date;
-  document.getElementById("date1").innerHTML = date;
+  
+
+
+
+  
+
+
 });
-
-console.log("hej"); // til at tjekke om js filen er linked til index.html

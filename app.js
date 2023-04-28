@@ -4,7 +4,8 @@ const app = express();
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
-const fetchNewsData = require("./public/newsSearch.js");
+
+
 
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
@@ -18,3 +19,4 @@ app.listen(3000, () => {
 app.use(express.static("public"));
 
 // spørgsmål: hvordan connecter man app.js med index.html?
+

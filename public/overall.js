@@ -23,52 +23,54 @@ document.getElementById("logout").addEventListener("click", function () {
     window.location.href = "index.html";
 });
 
-document.getElementById("searchbar").addEventListener("keypress", async (e) => {
 
-    let key = await fetch("key.json");
-    key = await key.json();
-    let apikey = (key.apikey);
 
-    if (e.key === 'Enter') {
+// document.getElementById("searchbar").addEventListener("keypress", async (e) => {
 
-        let search = document.getElementById("searchbar").value;
+//     let key = await fetch("key.json");
+//     key = await key.json();
+//     let apikey = (key.apikey);
 
-        let link = `https://newsapi.org/v2/everything?q=${search}   &language=en&apiKey=${apikey}`;
-        // Nyhederne er på engelsk. 
+//     if (e.key === 'Enter') {
 
-        //Jeg sætter Linket til at være det der står i søgefeltet, ved brug af ${search}. Search er en varibel defineret ovenover, der tager 
-        // værdien af det, der skrives i søgefeltet.  
+//         let search = document.getElementById("searchbar").value;
 
-        // Koden under, er det samme som i scriptnews.js, når jeg henter nyhederne.
+//         let link = `https://newsapi.org/v2/everything?q=${search}   &language=en&apiKey=${apikey}`;
+//         // Nyhederne er på engelsk. 
 
-        async function getData() {
-            let obj;
+//         //Jeg sætter Linket til at være det der står i søgefeltet, ved brug af ${search}. Search er en varibel defineret ovenover, der tager 
+//         // værdien af det, der skrives i søgefeltet.  
 
-            const res = await fetch(link);
-            obj = await res.json();
+//         // Koden under, er det samme som i scriptnews.js, når jeg henter nyhederne.
 
-            return obj
-        }
+//         async function getData() {
+//             let obj;
 
-        getData();
+//             const res = await fetch(link);
+//             obj = await res.json();
 
-        let data = await getData();
+//             return obj
+//         }
 
-        for (let i = 0; i < 7; i++) {
-            let headnews = [];
-            let imgnews = [];
-            let newspaper = [];
-            let urlnews = [];
+//         getData();
 
-            headnews[i] = data.articles[i].title;
-            imgnews[i] = data.articles[i].urlToImage;
-            newspaper[i] = data.articles[i].source.name;
-            urlnews[i] = data.articles[i].url;
+//         let data = await getData();
 
-            document.getElementById(`headnews${i}`).innerHTML = headnews[i];
-            document.getElementById(`imgnews${i}`).innerHTML = `<img src="${imgnews[i]}" alt="article picture">`;
-            document.getElementById(`linknews${i}`).innerHTML = `<a href="${urlnews[i]}" target="_blank">Read more</a>`;
-            document.getElementById(`newspaper${i}`).innerHTML = newspaper[i];
-        }
-    }
-});
+//         for (let i = 0; i < 7; i++) {
+//             let headnews = [];
+//             let imgnews = [];
+//             let newspaper = [];
+//             let urlnews = [];
+
+//             headnews[i] = data.articles[i].title;
+//             imgnews[i] = data.articles[i].urlToImage;
+//             newspaper[i] = data.articles[i].source.name;
+//             urlnews[i] = data.articles[i].url;
+
+//             document.getElementById(`headnews${i}`).innerHTML = headnews[i];
+//             document.getElementById(`imgnews${i}`).innerHTML = `<img src="${imgnews[i]}" alt="article picture">`;
+//             document.getElementById(`linknews${i}`).innerHTML = `<a href="${urlnews[i]}" target="_blank">Read more</a>`;
+//             document.getElementById(`newspaper${i}`).innerHTML = newspaper[i];
+//         }
+//     }
+// });
