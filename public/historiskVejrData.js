@@ -20,10 +20,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   let date = [];
   let temp = [];
 
-  console.log(data[1].date);
-
-  for (let i = 1; i < data.length; i++) {
-    console.log(data[i].date);
+  for (let index = 1; index < data.length; index++) {
+    console.log(data[index].date);
   }
 
   document.getElementById("date1").innerHTML = date;
