@@ -1,0 +1,145 @@
+body {
+    background-color: rgb(234, 231, 231);
+}
+
+#overalldiv {
+    flex-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+#topbar {
+    margin-bottom: 10px;
+    background-color: white;
+    height: 55px;
+    width: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#searchbar {
+    width: 500px;
+    height: 40px;
+    border-radius: 30px;
+    border: 0px solid white;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+
+#iconsearchbar {
+    width: 500px;
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid white;
+    box-shadow: 2px 2px 10px 2px lightgray;
+    margin-left: 50px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+#user {
+
+    margin-right: 30px;
+}
+
+#sidebar {
+    background-color: rgb(32, 32, 108);
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    color: white;
+    height: 800px;
+    z-index: 1;
+    margin-right: 0px;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+#icons {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.iconbox {
+    width: 80px;
+    height: 50px;
+    background-color: rgb(234, 231, 231);
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 1px;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+#iconboxhome {
+    margin-top: 80px;
+}
+
+#indholdtilsiden {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+
+a:hover {
+    color: blue;
+
+}
+
+#user {
+    font-size: 15px;
+    margin-right: 0px;
+}
+
+#userdiv {
+    display: flex;
+    align-items: baseline;
+}
+#manageuser {
+    margin-right: 15px;
+    margin-left: 0px;
+}
+
+.dividerlogin {
+    border-left: 2px solid rgb(234, 231, 231);
+    height: 40px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    align-self: center;
+}
+
+#logout:hover {
+    color: blue;
+}
+
+#logout {
+    color: rgb(234, 231, 231);
+    font-size: 20px;
+    margin-right: 10px
+}
+
+#createuser {
+    margin: 10px;
+}

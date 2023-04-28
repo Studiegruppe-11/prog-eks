@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="styleoverall.css" />
+    <link rel="stylesheet" href="stylenews.css" />
+    <link rel="stylesheet" href="styletimeweather.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!--Link til hjerte og hus icon, bruger icon, log ud icon-->
+    <!--Link til loop icon-->
+  </head>
+  <body>
+    <div id="overalldiv">
+      <div id="content">
+        <div id="sidebar">
+          <div id="icons">
+            <div class="iconbox" id="iconboxhome">
+              <a id="homepage" class="fa fa-home" href="index.html"></a>
+            </div>
+            <div class="iconbox">
+              <a id="favorites" class="fa fa-heart" href="favorites.html"></a>
+              <!-- Taget fra https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-heart-->
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div id="topbar">
+            <div id="iconsearchbar">
+              <p class="gg-search"></p>
+              <input
+                id="searchbar"
+                type="text"
+                placeholder="Søg efter ny musik, nyheder, kunstnere..."
+              />
+            </div>
+            <div id="userdiv">
+              <p id="user"></p>
+              <a href="opret.html" id="createuser">Opret bruger</a>
+              <a href="login.html" id="login">Login</a>
+              <p id="manageuser"></p>
+              <span class="dividerlogin"></span>
+              <p id="logout"></p>
+            </div>
+          </div>
+
+          <div id="indholdtilsiden">
+            <div id="allNews">
+              <p class="headlines">Nyheder</p>
+              <div id="news0" class="newsdiv">
+                <p id="imgnews0"></p>
+                <p id="headnews0" class="newstext"></p>
+                <p id="news0save" class="fa fa-heart"></p>
+                <p id="newspaper0" class="newspaper"></p>
+                <p id="linknews0">Læs mere</p>
+              </div>
+
+              <div id="news">
+                <div id="firstRow">
+                  <div id="news1" class="newsdiv">
+                    <p id="imgnews1" class="newsimg"></p>
+                    <p id="headnews1" class="newstext"></p>
+                    <p id="news1save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper1" class="newspaper"></p>
+                      <p class="link" id="linknews1">Læs mere</p>
+                    </div>
+                  </div>
+                  <div id="news2" class="newsdiv">
+                    <p id="imgnews2" class="newsimg"></p>
+                    <p id="headnews2" class="newstext"></p>
+                    <p id="news2save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper2" class="newspaper"></p>
+                      <p class="link" id="linknews2">Læs mere</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="secondRow">
+                  <div id="news3" class="newsdiv">
+                    <p id="imgnews3" class="newsimg"></p>
+                    <p id="headnews3" class="newstext"></p>
+                    <p id="news3save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper3" class="newspaper"></p>
+                      <p class="link" id="linknews3">Læs mere</p>
+                    </div>
+                  </div>
+                  <div id="news4" class="newsdiv">
+                    <p id="imgnews4" class="newsimg"></p>
+                    <p id="headnews4" class="newstext"></p>
+                    <p id="news4save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper4" class="newspaper"></p>
+                      <p class="link" id="linknews4">Læs mere</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="thirdRow">
+                  <div id="news5" class="newsdiv">
+                    <p id="imgnews5" class="newsimg"></p>
+                    <p id="headnews5" class="newstext"></p>
+                    <p id="news5save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper5" class="newspaper"></p>
+                      <p class="link" id="linknews5">Læs mere</p>
+                    </div>
+                  </div>
+                  <div id="news6" class="newsdiv">
+                    <p id="imgnews6" class="newsimg"></p>
+                    <p id="headnews6" class="newstext"></p>
+                    <p id="news6save" class="fa fa-heart"></p>
+                    <div class="newspaperandlink">
+                      <p id="newspaper6" class="newspaper"></p>
+                      <p class="link" id="linknews6">Læs mere</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="timeandWeather">
+              <p class="headlines">Tid</p>
+              <div id="timeandDate">
+                <p id="time"></p>
+                <p id="date"></p>
+                <p id="timezone">GMT+01 (Centraleuropærisk normaltid)</p>
+              </div>
+              <p class="headlines">Vejr</p>
+              <div id="weather">
+                <div id="templocation">
+                  <div id="tempicontemp">
+                    <p id="tempicon"></p>
+                    <p id="temp"></p>
+                  </div>
+                  <p class="location">København,</p>
+                  <p class="location">Danmark</p>
+                </div>
+                <div class="allsun">
+                  <iconify-icon
+                    class="sunicon"
+                    icon="wi:sunrise"
+                  ></iconify-icon>
+                  <div class="sundiv">
+                    <p class="suntext">Solopgang</p>
+                    <p id="sunrise" class="suntime"></p>
+                  </div>
+                </div>
+                <div class="allsun">
+                  <iconify-icon class="sunicon" icon="wi:sunset"></iconify-icon>
+                  <div class="sundiv">
+                    <p class="suntext">Solnedgang</p>
+                    <p id="sunset" class="suntime"></p>
+                  </div>
+                </div>
+                <a
+                  class="link"
+                  id="weatherreadmore"
+                  href="https://www.dmi.dk/lokation/show/DK/2618425/K%C3%B8benhavn/"
+                >
+                  Læs mere</a
+                >
+              </div>
+
+              <div id="forecast">
+                <div id="forecastheaderdiv">
+                  <div>
+                    <p id="forecastheader">Vejrudsigt</p>
+                  </div>
+                  <div>
+                    <a
+                    class="link"
+                    href="https://www.dmi.dk/lokation/show/DK/2618425/K%C3%B8benhavn/"
+                  >
+                    Læs mere</a
+                  >
+                  <a class="link" href="historiskVejrData.html">Historisk data</a>
+                  </div>
+
+                </div>
+                <span class="divider1"></span>
+                <div id="forecastdiv">
+                  <div class="weatherinfo">
+                    <p id="weekday0"></p>
+                    <p id="code1"></p>
+                    <p class="forecasttemp" id="day1"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday1"></p>
+                    <p id="code2"></p>
+                    <p class="forecasttemp" id="day2"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday2"></p>
+                    <p id="code3"></p>
+                    <p class="forecasttemp" id="day3"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday3"></p>
+                    <p id="code4"></p>
+                    <p class="forecasttemp" id="day4"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday4"></p>
+                    <p id="code5"></p>
+                    <p class="forecasttemp" id="day5"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday5"></p>
+                    <p id="code6"></p>
+                    <p class="forecasttemp" id="day6"></p>
+                  </div>
+                  <span class="divider2"></span>
+                  <div class="weatherinfo">
+                    <p id="weekday6"></p>
+                    <p id="code7"></p>
+                    <p class="forecasttemp" id="day7"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nedenunder denne ligger de ptags, der bliver erstatet med læst
+        hvis en nyhed er læst. Den ligger her, så den ikke roder med opstillingen i newsdiv'ne
+    -->
+    <p id="news0readcheck"></p>
+    <p id="news1readcheck"></p>
+    <p id="news2readcheck"></p>
+    <p id="news3readcheck"></p>
+    <p id="news4readcheck"></p>
+    <p id="news5readcheck"></p>
+    <p id="news6readcheck"></p>
+    <p id="news7readcheck"></p>
+  </body>
+  
+  <script src="scripttimeweather.js"></script>
+  <script src="overall.js"></script>  
+  <script src="scriptnews.js"></script>
+
+  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  <!-- solopgang icon Taget fra https://code.iconify.design/ -->
+</html>

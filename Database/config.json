@@ -1,0 +1,14 @@
+{  
+    "server": "servernyheder.database.windows.net", 
+    "authentication": {
+        "type": "default",
+        "options": {
+            "userName": "gustavzeuthen", 
+            "password": "Database123!" 
+        }
+    },
+    "options": {
+        "encrypt": true,
+        "database": "nyhederopgave"
+    }
+} 
