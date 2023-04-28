@@ -20,5 +20,4 @@ router.get('/news', async (req, res) => {
 
 
 
-
 module.exports = router;

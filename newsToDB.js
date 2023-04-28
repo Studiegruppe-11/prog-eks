@@ -2,7 +2,7 @@ const axios = require("axios");
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 const TYPES = require("tedious").TYPES;
-const config = require("./Database/config.json");
+const config = require("../Database/config.json");
 
 const connection = new Connection(config);
 

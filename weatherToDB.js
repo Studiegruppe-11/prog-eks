@@ -1,7 +1,7 @@
 // Import necessary modules
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
-const config = require("./Database/config.json");
+const config = require("../Database/config.json");
 
 // Define Visual Crossing Weather API URL
 const apiUrl =
