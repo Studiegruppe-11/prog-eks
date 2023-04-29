@@ -5,7 +5,7 @@ const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
-
+//const newsToDB = require("./fetcherToDB/newsToDB");
 
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
@@ -16,7 +16,4 @@ app.listen(3000, () => {
 });
 
 // til index.html så vi kan åbne localhost 3000 /index.html
-app.use(express.static("public"));
-
-// spørgsmål: hvordan connecter man app.js med index.html?
-
+app.use(express.static("public"));  

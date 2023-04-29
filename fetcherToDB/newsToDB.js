@@ -20,7 +20,7 @@ function connect() {
     connection.connect();
   });
 }
-  
+
 async function run() {
   try {
     await connect();
