@@ -1,5 +1,5 @@
 {  
-    "server": "servernyheder.database.windows.net", 
+    "server": "servereksamen.database.windows.net", 
     "authentication": {
         "type": "default",
         "options": {
@@ -9,6 +9,8 @@
     },
     "options": {
         "encrypt": true,
-        "database": "nyhederopgave"
+        "database": "eksamensDatabase"
     }
 } 
+
+
