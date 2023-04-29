@@ -7,14 +7,13 @@ const { executeSQL } = require('../controllers/executeSQL.js');
 
 router.get('/weatherForecast', async (req, res) => {
   try {
-    const result = await executeSQL('SELECT * FROM WeatherForecast');
+    const result = await executeSQL('SELECT * FROM weatherForecast');
     res.json(result);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
 });
-
 
 
 

@@ -1,237 +1,238 @@
 body {
-    background-color: rgb(234, 231, 231);
+  background-color: rgb(234, 231, 231);
 }
 
 #overalldiv {
-    flex-wrap: wrap;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
+  flex-wrap: wrap;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 #topbar {
-    margin-bottom: 10px;
-    background-color: white;
-    height: 55px;
-    width: auto;
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 55px;
+  width: auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #searchbar {
-    width: 500px;
-    height: 40px;
-    border-radius: 30px;
-    border: 0px solid white;
-    margin-left: 10px;
-    font-size: 12px;
+  width: 500px;
+  height: 40px;
+  border-radius: 30px;
+  border: 0px solid white;
+  margin-left: 10px;
+  font-size: 12px;
 }
 
 
 #iconsearchbar {
-    width: 500px;
-    height: 40px;
-    border-radius: 30px;
-    border: 1px solid white;
-    box-shadow: 2px 2px 10px 2px lightgray;
-    margin-left: 50px;
-    padding-left: 50px;
-    display: flex;
-    align-items: center;
+  width: 500px;
+  height: 40px;
+  border-radius: 30px;
+  border: 1px solid white;
+  box-shadow: 2px 2px 10px 2px lightgray;
+  margin-left: 50px;
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    outline: none;
+  outline: none;
 }
 
 #user {
 
-    margin-right: 30px;
+  margin-right: 30px;
 }
 
 #sidebar {
-    background-color: rgb(32, 32, 108);
-    display: flex;
-    flex-direction: column;
-    width: 80px;
-    color: white;
-    height: 800px;
-    z-index: 1;
-    margin-right: 0px;
+  background-color: rgb(32, 32, 108);
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  color: white;
+  height: 800px;
+  z-index: 1;
+  margin-right: 0px;
 }
 
 #content {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 p {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #icons {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
 
 }
 
 .iconbox {
-    width: 80px;
-    height: 50px;
-    background-color: rgb(234, 231, 231);
-    border-radius: 5px;
-    font-size: 20px;
-    margin: 1px;
-    margin-left: 20px;
-    padding-left: 10px;
+  width: 80px;
+  height: 50px;
+  background-color: rgb(234, 231, 231);
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 1px;
+  margin-left: 20px;
+  padding-left: 10px;
 }
 
 #iconboxhome {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 #indholdtilsiden {
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
 }
 
 
 a:hover {
-    color: blue;
+  color: blue;
 
 }
 
 #user {
-    font-size: 15px;
-    margin-right: 0px;
+  font-size: 15px;
+  margin-right: 0px;
 }
 
 #userdiv {
-    display: flex;
-    align-items: baseline;
+  display: flex;
+  align-items: baseline;
 }
+
 #manageuser {
-    margin-right: 15px;
-    margin-left: 0px;
+  margin-right: 15px;
+  margin-left: 0px;
 }
 
 .dividerlogin {
-    border-left: 2px solid rgb(234, 231, 231);
-    height: 40px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-    align-self: center;
+  border-left: 2px solid rgb(234, 231, 231);
+  height: 40px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  align-self: center;
 }
 
 #logout:hover {
-    color: blue;
+  color: blue;
 }
 
 #logout {
-    color: rgb(234, 231, 231);
-    font-size: 20px;
-    margin-right: 10px
+  color: rgb(234, 231, 231);
+  font-size: 20px;
+  margin-right: 10px
 }
 
 #createuser {
-    margin: 10px;
+  margin: 10px;
 }
 
 
 .searchbar {
-    width: 50%;
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  
-  #search {
-    display: flexbox;
-    background-color: none;
-    background-image: url("/img/loop.png");
-    background-size: 15px;
-    background-repeat: no-repeat;
-    background-position: 7px;
-    border-radius: 30px;
-    border: 1px solid transparent;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-    max-height: 50%;
-    width: 90%;
-    margin: 2%;
-    padding-left: 5%;
-  }
-  
-  #search::placeholder {
-    color: rgba(119, 119, 119, 0.472);
-  }
-  
-  input {
-    font-size: 1rem;
-  }
-  
-  .user-cards {
-    display: grid;
-    flex-direction: column;
-    gap: 0.25rem;
-    position: absolute;
-    height: fit-content;
-    width: 45%;
-    top: 38px;
-    z-index: 100;
-  }
-  
-  .card {
-    border: 1px solid black;
-    background-color: white;
-    padding: 0.5rem;
-  }
-  
-  .card > .header {
-    margin-bottom: 0.25rem;
-  }
-  
-  .card > .body {
-    font-size: 0.8rem;
-    color: #777;
-  }
-  
-  .hide {
-    display: none;
-  }
-  
-  #search:focus {
-    background-image: none;
-  }
+  width: 50%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  #modalImg {
-    max-width: 100%;
-  }
+#search {
+  display: flexbox;
+  background-color: none;
+  background-image: url("/img/loop.png");
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: 7px;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  max-height: 50%;
+  width: 90%;
+  margin: 2%;
+  padding-left: 5%;
+}
+
+#search::placeholder {
+  color: rgba(119, 119, 119, 0.472);
+}
+
+input {
+  font-size: 1rem;
+}
+
+.user-cards {
+  display: grid;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: absolute;
+  height: fit-content;
+  width: 45%;
+  top: 38px;
+  z-index: 100;
+}
+
+.card {
+  border: 1px solid black;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.card>.header {
+  margin-bottom: 0.25rem;
+}
+
+.card>.body {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.hide {
+  display: none;
+}
+
+#search:focus {
+  background-image: none;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#modalImg {
+  max-width: 100%;
+}

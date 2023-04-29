@@ -43,9 +43,7 @@ for (let i = 0; i < 7; i++) {
   imgnews[i] = data[(i+1).toString()].imageUrl;
   urlnews[i] = data[(i+1).toString()].url;
 
-  console.log(urlnews[i])
-
-
+  
   document.getElementById(`headnews${i}`).innerHTML = headnews[i];
   document.getElementById(`imgnews${i}`).innerHTML = '<img src="'+imgnews[i]+'">';
   document.getElementById(`newspaper${i}`).innerHTML = newspaper[i];
