@@ -5,9 +5,6 @@ const { executeSQL } = require('../controllers/executeSQL.js');
 
 
 
-
-
-
 router.get('/users', async (req, res) => {
     try {
       const result = await executeSQL('SELECT * FROM users');
