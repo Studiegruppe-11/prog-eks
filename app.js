@@ -5,6 +5,8 @@ const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
+
+// hvis den linje nedenuder er aktiv fetcher den hele tiden til DB. derfor ikke gør den aktiv
 //const newsToDB = require("./fetcherToDB/newsToDB");
 
 app.use("/", newsRoutes);
