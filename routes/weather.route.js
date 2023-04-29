@@ -4,7 +4,7 @@ const { executeSQL } = require('../controllers/executeSQL.js');
 
 // This route gets all the weather data from the database using the executeSQL function from executeSQL.js
 
-
+//henter alt fra weatherForecast tabellen som vi bruger i vores vejrudsigt
 router.get('/weatherForecast', async (req, res) => {
   try {
     const result = await executeSQL('SELECT * FROM weatherForecast');
@@ -17,6 +17,7 @@ router.get('/weatherForecast', async (req, res) => {
 
 
 
+// henter alt fra historiskevejrdata tabellen som vi bruger til at se historisk vejr
 router.get('/historiskVejrData', async (req, res) => {
   try {
     const result = await executeSQL('SELECT * FROM weatherLastThirty');
