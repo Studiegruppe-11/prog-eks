@@ -4,7 +4,7 @@ body {
 
 #overalldiv {
   flex-wrap: wrap;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +28,6 @@ body {
   font-size: 12px;
 }
 
-
 #iconsearchbar {
   width: 500px;
   height: 40px;
@@ -48,7 +47,6 @@ select:focus {
 }
 
 #user {
-
   margin-right: 30px;
 }
 
@@ -78,7 +76,6 @@ p {
   width: 50px;
   display: flex;
   flex-direction: column;
-
 }
 
 .iconbox {
@@ -102,10 +99,8 @@ p {
   margin-left: 20px;
 }
 
-
 a:hover {
   color: blue;
-
 }
 
 #user {
@@ -138,13 +133,12 @@ a:hover {
 #logout {
   color: rgb(234, 231, 231);
   font-size: 20px;
-  margin-right: 10px
+  margin-right: 10px;
 }
 
 #createuser {
   margin: 10px;
 }
-
 
 .searchbar {
   width: 50%;
@@ -179,14 +173,13 @@ input {
 }
 
 .user-cards {
-  display: grid;
-  flex-direction: column;
   gap: 0.25rem;
   position: absolute;
   height: fit-content;
   width: 45%;
-  top: 38px;
+  top: 60px;
   z-index: 100;
+  padding-right: 100px;
 }
 
 .card {
@@ -195,11 +188,11 @@ input {
   padding: 0.5rem;
 }
 
-.card>.header {
+.card > .header {
   margin-bottom: 0.25rem;
 }
 
-.card>.body {
+.card > .body {
   font-size: 0.8rem;
   color: #777;
 }
