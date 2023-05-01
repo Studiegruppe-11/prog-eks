@@ -1,24 +1,24 @@
 // opret.js i mappen public
-document.getElementById("create").addEventListener("click", async function () {
-  const name = document.getElementById("name").value;
-  const favorite = document.getElementById("favorite").value;
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+// document.getElementById("create").addEventListener("click", async function () {
+//   const name = document.getElementById("name").value;
+//   const favorite = document.getElementById("favorite").value;
+//   const username = document.getElementById("username").value;
+//   const password = document.getElementById("password").value;
 
-  const userData = {
-    name: name,
-    favorite: favorite,
-    username: username,
-    password: password
-  };
+//   const userData = {
+//     name: name,
+//     favorite: favorite,
+//     username: username,
+//     password: password
+//   };
 
 
  
-  module.exports = { userData };
+//   module.exports = { userData };
 
 
 
-});
+// });
 
 
 
