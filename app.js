@@ -1,6 +1,8 @@
 //app.js i root
 const express = require("express");
 const app = express();
+
+
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
