@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 router.post('/users/login', bodyParser.json(), async (req, res) => {
   const { username, password } = req.body;
   
-  // Udfør SQL-queries med brugernavn og adgangskode.
+  // tager navne fra login.js og ser om det passer med databasen.
   const result = await executeSQL(`SELECT * FROM users WHERE username='${username}' AND password='${password}'`);
   
   if (Object.keys(result).length> 0 ) { // Hvis der er mindst et resultat fra databasen
@@ -49,9 +49,6 @@ router.post('/users/create', bodyParser.json(), async (req, res) => {
   
   res.json(result);
   });
-
-
-
 
 
 module.exports = router;
