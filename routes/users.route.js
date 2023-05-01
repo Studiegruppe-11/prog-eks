@@ -1,75 +1,53 @@
 //users.route.js i mappen routes
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { executeSQL } = require('../controllers/executeSQL.js');
+const { executeSQL } = require("../controllers/executeSQL.js");
 
-const { userData } = require('../public/opret.js');
-
-
-router.get('/users', async (req, res) => {
-    try {
-      const result = await executeSQL('SELECT * FROM users');
-      res.send(result);
-    } catch (error) {
-      console.log(error);
-      res.status(500).send(error.message);
-    }
-  }); 
-
-
-
-  
-router.post('/users', async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
-    // Hent data fra userData-objektet
-    const { name, favorite, username, password } = userData;
-
-    // Indsæt data i databasen
-    const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
-    const result = await executeSQL(query, [name, favorite, username, password]);
-
-    // Send en bekræftelse til klienten
-    res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(userData)}`);
+    const result = await executeSQL("SELECT * FROM users");
+    res.send(result);
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
   }
 });
 
+router.post("/users", async (req, res) => {
+  try {
+    // Hent data fra userData-objektet
+    const { name, favorite, username, password } = userData;
 
+    // Indsæt data i databasen
+    const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
+    const result = await executeSQL(query, [
+      name,
+      favorite,
+      username,
+      password,
+    ]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Send en bekræftelse til klienten
+    res.send(
+      `Data blev tilføjet til users-tabellen: ${JSON.stringify(userData)}`
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
 
 module.exports = router;
 
-
 // nedenstående skal bruges senere
 
-
-
-// denne SQL query henter alle users fra databasen ved at bruge executeSQL funktionen fra executeSQL.js. 
-
-
+// denne SQL query henter alle users fra databasen ved at bruge executeSQL funktionen fra executeSQL.js.
 
 // indsæt ind i database når man opretter bruger
 
 // router.post('/users/create', async (req, res) => {
 //     const { name, favorite, username, password } = req.body;
-  
+
 //     try {
 //       const result = await executeSQL(`INSERT INTO users (name, username, favorite, password) VALUES ('${name}', '${username}','${favorite}', '${password}')`);
 //       res.send({ success: true, message: 'User created successfully.' });
@@ -78,9 +56,6 @@ module.exports = router;
 //       res.status(500).send(error.message);
 //     }
 //   });
-
-
-
 
 // router.post('/login', async (req, res) => {
 //   try {
@@ -108,4 +83,3 @@ module.exports = router;
 //   // store the token in a session or a cookie
 //   // return the token to the client
 // }
-
