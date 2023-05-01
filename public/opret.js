@@ -12,11 +12,12 @@ document.getElementById("create").addEventListener("click", async function () {
     password: password
   };
 
+
  
+  module.exports = { userData };
 
 
 
-  
 });
 
 
