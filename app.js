@@ -19,3 +19,6 @@ app.listen(3000, () => {
 
 // til index.html så vi kan åbne localhost 3000 /index.html
 app.use(express.static("public"));
+
+
+//Jskajlj
