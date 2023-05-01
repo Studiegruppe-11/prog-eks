@@ -4,39 +4,62 @@ const router = express.Router();
 const { executeSQL } = require('../controllers/executeSQL.js');
 
 
+// Nedenunder er en test for at se alle brugere. 
+
+
 
 
 router.get('/users', async (req, res) => {
-    try {
-      const result = await executeSQL('SELECT * FROM users');
-      res.send(result);
-    } catch (error) {
-      console.log(error);
-      res.status(500).send(error.message);
-    }
-  }); 
-
-//Skal bruges til at importere data fra opret.js til databasen.
-const { userData } = require('../public/opret.js');
-
-
-router.post('/users', async (req, res) => {
   try {
-    const { name, favorite, username, password } = req.body;
-    const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
-    const result = await executeSQL(query, [name, favorite, username, password]);
-    res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(req.body)}`);
+    const result = await executeSQL('SELECT * FROM users');
+    res.send(result);
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
   }
-});
+}); 
+
 
 module.exports = router;
 
 
 
 
+
+
+
+// routes 
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Skal bruges til at importere data fra opret.js til databasen.
+// const { userData } = require('../public/opret.js');
+
+// TEST SOM IKKE VIRKER
+// router.post('/users', async (req, res) => {
+//   try {
+//     const { name, favorite, username, password } = req.body;
+//     const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
+//     const result = await executeSQL(query, [name, favorite, username, password]);
+//     res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(req.body)}`);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error.message);
+//   }
+// });
 
 
 
