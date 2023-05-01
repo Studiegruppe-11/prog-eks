@@ -17,7 +17,6 @@ closeButton.addEventListener('click', () => {
 modal.addEventListener('click', (event) => {
   if (event.target === modal) {
     modal.style.display = 'none';
-    console.log("ehe")
   }
 });
 
@@ -50,7 +49,7 @@ searchInput.addEventListener("input", (e) => {
     articleCardContainer.append(article.element);
   });
 
-  console.log("filteredArticles: ", filteredArticles);
+  // console.log("filteredArticles: ", filteredArticles);
 
 });
 

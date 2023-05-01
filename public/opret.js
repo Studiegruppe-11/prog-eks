@@ -12,16 +12,12 @@ document.getElementById("create").addEventListener("click", async function () {
     password: password
   };
 
-  const response = await fetch('/users/create', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  });
 
-  const result = await response.json();
-  console.log(result);
+ 
+  module.exports = { userData };
+
+
+
 });
 
 

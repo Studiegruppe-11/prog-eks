@@ -1,3 +1,6 @@
+
+
+
 const express = require('express');
 const router = express.Router();
 const { executeSQL } = require('../controllers/executeSQL.js');
@@ -13,7 +16,7 @@ router.get('/news', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
-  } 
+  }
 });
 
 
