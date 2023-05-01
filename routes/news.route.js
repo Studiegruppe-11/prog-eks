@@ -1,11 +1,6 @@
-
-
-
 const express = require('express');
 const router = express.Router();
 const { executeSQL } = require('../controllers/executeSQL.js');
-
-
 
 // denne SQL query henter alle news fra databasen ved at bruge executeSQL funktionen fra executeSQL.js. 
 
@@ -18,9 +13,5 @@ router.get('/news', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
-
-
-
-
 
 module.exports = router;

@@ -28,13 +28,6 @@ router.get('/historiskVejrData', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
 module.exports = router;
 
 

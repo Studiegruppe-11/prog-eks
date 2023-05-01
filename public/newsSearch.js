@@ -1,10 +1,11 @@
 const articleCardTemplate = document.querySelector("[data-article-template]");
 const articleCardContainer = document.querySelector(".user-cards");
 const searchInput = document.querySelector("#searchbar");
-articleCardContainer.style.display = "none";
 const modal = document.getElementById("myModal");; // Replace 'myModal' with the ID or class of your modal
-
 const closeButton = document.getElementById('closeButton'); // Assuming the close button has a class 'close'
+
+articleCardContainer.style.display = "none";
+
 let articles = [];
 
 // Close the modal when the close button is clicked
@@ -20,11 +21,9 @@ modal.addEventListener('click', (event) => {
   }
 });
 
-
 articleCardContainer.querySelectorAll(".article-card").forEach((card) => {
   card.classList.add("hide");
 });
-
 
 // Filter articles based on search input
 searchInput.addEventListener("input", (e) => {
