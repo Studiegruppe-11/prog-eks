@@ -19,37 +19,22 @@ router.get('/users', async (req, res) => {
 
 
   
-router.post('/users', async (req, res) => {
-  try {
-    // Hent data fra userData-objektet
-    const { name, favorite, username, password } = userData;
+// router.post('/users', async (req, res) => {
+//   try {
+//     // Hent data fra userData-objektet
+//     const { name, favorite, username, password } = userData;
 
-    // Indsæt data i databasen
-    const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
-    const result = await executeSQL(query, [name, favorite, username, password]);
+//     // Indsæt data i databasen
+//     const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
+//     const result = await executeSQL(query, [name, favorite, username, password]);
 
-    // Send en bekræftelse til klienten
-    res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(userData)}`);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
-  }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//     // Send en bekræftelse til klienten
+//     res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(userData)}`);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error.message);
+//   }
+// });
 
 
 
