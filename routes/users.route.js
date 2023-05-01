@@ -1,8 +1,9 @@
-// users.route.js i mappen routes
+//users.route.js i mappen routes
 const express = require('express');
 const router = express.Router();
 const { executeSQL } = require('../controllers/executeSQL.js');
 
+const { userData } = require('../public/opret.js');
 
 
 router.get('/users', async (req, res) => {
@@ -14,6 +15,43 @@ router.get('/users', async (req, res) => {
       res.status(500).send(error.message);
     }
   }); 
+
+
+
+  
+router.post('/users', async (req, res) => {
+  try {
+    // Hent data fra userData-objektet
+    const { name, favorite, username, password } = userData;
+
+    // Indsæt data i databasen
+    const query = `INSERT INTO users (name, favorite, username, password) VALUES (?, ?, ?, ?)`;
+    const result = await executeSQL(query, [name, favorite, username, password]);
+
+    // Send en bekræftelse til klienten
+    res.send(`Data blev tilføjet til users-tabellen: ${JSON.stringify(userData)}`);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
