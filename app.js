@@ -9,7 +9,7 @@ const weatherRoutes = require("./routes/weather.route");
 
 
 // // hvis den linje nedenuder er aktiv fetcher den hele tiden til DB. derfor ikke gør den aktiv
-// //const newsToDB = require("./fetcherToDB/newsToDB");
+//const newsToDB = require("./fetcherToDB/newsToDB");
 
 
 // end point til at hente api'er. 
