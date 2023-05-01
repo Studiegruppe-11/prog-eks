@@ -91,7 +91,7 @@ searchInput.addEventListener("input", (event) => {
 });
 
 // Hent nyhedsdata fra serveren og opdater artikelkort
-fetch("/news")
+fetch("http://localhost:3000/news")
   .then((response) => response.json())
   .then((data) => {
     newsData = Object.values(data);
