@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   }
 
-});
+}); 
 
 
 // trimmer icon fra db og indsætter icon. 
