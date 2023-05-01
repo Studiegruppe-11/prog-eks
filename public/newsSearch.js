@@ -1,65 +1,54 @@
 const articleCardTemplate = document.querySelector("[data-article-template]");
 const articleCardContainer = document.querySelector(".user-cards");
 const searchInput = document.querySelector("#searchbar");
-const modal = document.getElementById("myModal");; // Replace 'myModal' with the ID or class of your modal
-const closeButton = document.getElementById('closeButton'); // Assuming the close button has a class 'close'
+const modal = document.getElementById("myModal"); // Erstat 'myModal' med ID'et eller klassen på din modal
+const closeButton = document.getElementById("closeButton"); // Går ud fra at lukkeknappen har klassen 'close'
+
+let newsData = [];
 
 articleCardContainer.style.display = "none";
 
-let articles = [];
-
-// Close the modal when the close button is clicked
-closeButton.addEventListener('click', () => {
-  modal.style.display = 'none';
-
+// Luk modalen når lukkeknappen klikkes på
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none";
 });
 
-// Close the modal when the user clicks anywhere outside of it
-modal.addEventListener('click', (event) => {
+// Luk modalen når brugeren klikker et sted udenfor modalen
+modal.addEventListener("click", (event) => {
   if (event.target === modal) {
-    modal.style.display = 'none';
+    modal.style.display = "none";
   }
 });
 
-articleCardContainer.querySelectorAll(".article-card").forEach((card) => {
-  card.classList.add("hide");
-});
-
-// Filter articles based on search input
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
-  const filteredArticles = articles.filter((article) => {
+// Filtrer nyhedsdata ud fra søgeord og opdater artikelkort på siden
+const filterAndUpdateArticles = (searchQuery) => {
+  const filteredNews = newsData.filter((article) => {
+    const title = article.title.toLowerCase();
+    const author = article.author && article.author.toLowerCase();
+    const description =
+      article.description && article.description.toLowerCase();
     return (
-      article.title.toLowerCase().includes(value) ||
-      article.source.toLowerCase().includes(value)
+      title.includes(searchQuery.toLowerCase()) ||
+      (author && author.includes(searchQuery.toLowerCase())) ||
+      (description && description.includes(searchQuery.toLowerCase()))
     );
   });
-  articleCardContainer.style.display = filteredArticles.length === 0 ? "none" : "block";
 
-  // Clear previously filtered articles
-  articleCardContainer.querySelectorAll(".article-card").forEach((card) => {
-    card.classList.add("hide");
-  });
+  // Ryd tidligere filtrerede artikler
+  articleCardContainer.innerHTML = "";
 
-  articleCardContainer.innerHTML = ''; // Clear the container
+  // Opret et kort for hver filtreret artikel
+  filteredNews.forEach((article) => {
+    const card = articleCardTemplate.content
+      .cloneNode(true)
+      .querySelector(".card");
+    const header = card.querySelector("[data-header]");
+    const body = card.querySelector("[data-body]");
 
-  filteredArticles.forEach((article) => {
-    article.element.classList.remove("hide");
-    articleCardContainer.append(article.element);
-  });
+    header.textContent = article.title;
+    body.textContent = article.author;
 
-  // console.log("filteredArticles: ", filteredArticles);
-
-});
-
-
-searchInput.addEventListener("keyup", () => {
-  articleCardContainer.style.display = searchInput.value === "" ? "none" : "block";
-  for (let i = 0; i < articleCardContainer.children.length; i++) {
-    const card = articleCardContainer.children[i];
-    const article = articles[i];
     card.addEventListener("click", () => {
-      const modal = document.getElementById("myModal");
       const modalSrc = document.getElementById("modalSrc");
       const modalTitle = document.getElementById("modalTitle");
       const modalTxt = document.getElementById("modalTxt");
@@ -67,31 +56,44 @@ searchInput.addEventListener("keyup", () => {
       modal.style.display = "block";
       modalTitle.innerHTML = article.title;
       modalTxt.innerHTML = article.description;
-      modalImg.src = article.Image;
-      modalSrc.innerHTML = article.source;
+      modalImg.src = article.imageUrl;
+      modalSrc.innerHTML = article.author;
+
+      // Ryd søgefeltet og skjul kortcontaineren
       searchInput.value = "";
       articleCardContainer.style.display = "none";
     });
+
+    articleCardContainer.appendChild(card);
+  });
+
+  // Tilføj klasse til containeren baseret på antallet af filtrerede artikler
+  const numFilteredArticles = filteredNews.length;
+  if (numFilteredArticles === 0) {
+    articleCardContainer.classList.remove("single-result");
+    articleCardContainer.classList.add("no-results");
+  } else if (numFilteredArticles === 1) {
+    articleCardContainer.classList.remove("no-results");
+    articleCardContainer.classList.add("single-result");
+  } else {
+    articleCardContainer.classList.remove("no-results", "single-result");
+  }
+};
+
+// Filtrer nyhedsdata og opdater artikelkort, når brugeren skriver i søgefeltet
+searchInput.addEventListener("input", (event) => {
+  articleCardContainer.style.display = "block";
+  const searchQuery = event.target.value;
+  filterAndUpdateArticles(searchQuery);
+  if (searchQuery === "") {
+    articleCardContainer.style.display = "none";
   }
 });
 
-fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=e3694cebee5640f0b058c83adedf7fa2")
+// Hent nyhedsdata fra serveren og opdater artikelkort
+fetch("/news")
   .then((response) => response.json())
   .then((data) => {
-    articles = data.articles.map((article) => {
-      const card = articleCardTemplate.content.cloneNode(true).children[0];
-      const header = card.querySelector("[data-header]");
-      const body = card.querySelector("[data-body]");
-      header.textContent = article.title;
-      body.textContent = article.source.name;
-      articleCardContainer.append(card);
-      return {
-        title: article.title,
-        source: article.source.name,
-        description: article.description,
-        Image: article.urlToImage,
-        element: card,
-      };
-    });
+    newsData = Object.values(data);
+    filterAndUpdateArticles("");
   });
-
