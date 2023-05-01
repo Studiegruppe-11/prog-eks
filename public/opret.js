@@ -1,24 +1,35 @@
-// opret.js i mappen public
+//opret.js i mappen public
+
 // document.getElementById("create").addEventListener("click", async function () {
-//   const name = document.getElementById("name").value;
-//   const favorite = document.getElementById("favorite").value;
-//   const username = document.getElementById("username").value;
-//   const password = document.getElementById("password").value;
+//     const name = document.getElementById("name").value;
+//     const favorite = document.getElementById("favorite").value;
+//     const username = document.getElementById("username").value;
+//     const password = document.getElementById("password").value;
+  
+//     const userData = {
+//       name: name,
+//       favorite: favorite,
+//       username: username,
+//       password: password
+//     };
+  
+//     const response = await fetch('/users', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(userData)
+//     });
+  
+//     if (response.ok) {
+//       const jsonResponse = await response.json();
+//       console.log(jsonResponse);
+//     } else {
+//       console.error('Server error:', response.status);
+//     }
+//   });
+  
 
-//   const userData = {
-//     name: name,
-//     favorite: favorite,
-//     username: username,
-//     password: password
-//   };
-
-
- 
-//   module.exports = { userData };
-
-
-
-// });
 
 
 
@@ -28,27 +39,12 @@
 
 
 
-
-
-
+// Nedenunder er fra gamle opgave
 
 
 // document.getElementById("create").addEventListener("click", function () {
 
 // });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // if (document.getElementById("name").value !== "" && document.getElementById("favorite").value !== ""
 // && document.getElementById("username").value !== "" && document.getElementById("password").value !== "") {
