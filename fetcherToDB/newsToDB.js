@@ -93,7 +93,6 @@ function executeNextRequest() {
   if (requestQueue.length > 0) {
     connection.execSql(requestQueue[0]);
   }
-  console.log("imageUrl")
 }
 
 run();

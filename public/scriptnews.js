@@ -7,13 +7,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     key = await key.json();
     let apikey = (key.apikey);
 
-
-    // fra gamle opgave api
-    //https://newsapi.org/v2/top-headlines?country=us&apiKey=${apikey}
-
-
-    const res = await fetch(`http://localhost:3000/news`) // api-key er gemt i en json fil, så den er skjult. 
-    // kun US nyheder. 
+    const res = await fetch(`http://localhost:3000/news`)
 
     obj = await res.json();
 

@@ -1,88 +1,51 @@
 //opret.js i mappen public
 
-// document.getElementById("create").addEventListener("click", async function () {
-//     const name = document.getElementById("name").value;
-//     const favorite = document.getElementById("favorite").value;
-//     const username = document.getElementById("username").value;
-//     const password = document.getElementById("password").value;
-  
-//     const userData = {
-//       name: name,
-//       favorite: favorite,
-//       username: username,
-//       password: password
-//     };
-  
-//     const response = await fetch('/users', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(userData)
-//     });
-  
-//     if (response.ok) {
-//       const jsonResponse = await response.json();
-//       console.log(jsonResponse);
-//     } else {
-//       console.error('Server error:', response.status);
-//     }
-//   });
-  
 
 
-  
+// hvis alle felter er udfyldt gemmes brugeroplysninger i variable. 
+// derefter fetches de til enpoint /users/create så de kan bruges i users.route.js
+// derefter sendes brugeren til login.html
+document.getElementById("create").addEventListener("click", function () {
+
+    if (document.getElementById("name").value !== "" && document.getElementById("favorite").value !== ""
+        && document.getElementById("username").value !== "" && document.getElementById("password").value !== "") {
 
 
+        let name = document.getElementById("name").value;
+        let favorite = document.getElementById("favorite").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        // Send variablerne til serveren
+        fetch('/users/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                favorite: favorite,
+                username: username,
+                password: password
+            })
+        }).then((response) => {
+            if (response.ok) {
+                console.log(response.status)
+                window.location.href = "/login.html";
+            } else {
+                console.log(response.status)
+            }
+        }).catch((error) => {
+            console.log(error);
+        });
 
 
+    }
 
+    else {
 
+        alert("Du skal udfylde alle felter");
+    }
 
-// Nedenunder er fra gamle opgave
-
-
-// document.getElementById("create").addEventListener("click", function () {
-
-// });
-
-// if (document.getElementById("name").value !== "" && document.getElementById("favorite").value !== ""
-// && document.getElementById("username").value !== "" && document.getElementById("password").value !== "") {
-
-// // Hvis alle felter er udfyldt, defineres følgende variabler:
-// let name = document.getElementById("name").value;
-// let favorite = document.getElementById("favorite").value;
-// let username = document.getElementById("username").value;
-// let password = document.getElementById("password").value;
-
-
-// // Gemmer brugeroplysninger i localstorage
-// const userprofile = {
-//   nameuser: name,
-//   favoriteuser: favorite,
-//   usernameuser: username,
-//   passworduser: password,
-// };
-// // Gemmer objektet i localstorage som en string med JSON.stringify.
-// window.localStorage.setItem("userprofile", JSON.stringify(userprofile));
-
-// document.getElementById("creatediv").innerHTML = "Bruger oprettet";
-
-// document.getElementById("creatediv").innerHTML += `<div>
-
-// <p>Gå til login
-
-// <a href="login.html"> Klik her</a>
-
-// </p>
-
-// </div>`;
-
-// }
-
-// else {
-
-// alert("Du skal udfylde alle felter");
-// }
-
+});
 
