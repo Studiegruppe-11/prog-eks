@@ -38,4 +38,22 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 // HERNEDE SKAL LOGUD KODE VÆRE. 
+const logoutBtn = document.getElementById('logout');
 
+// Lyt på klikhændelsen på logout-knappen
+logoutBtn.addEventListener('click', (event) => {
+  event.preventDefault(); // Forhindrer standardadfærd (dvs. at navigere til href-attributten)
+
+  // Udfør en HTTP DELETE-anmodning til '/loggedInUser'
+  fetch('/loggedInUser', { method: 'DELETE' })
+    .then(response => {
+      if (response.ok) {
+        // Hvis sletningen var vellykket, omdiriger til index.html
+        window.location.href = '/index.html';
+      } else {
+        console.log('Der opstod en fejl under sletning af loggedInUser');
+      }
+    })
+    .catch(error => console.log(error));
+});
+ 

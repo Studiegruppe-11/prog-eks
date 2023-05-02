@@ -22,13 +22,12 @@ router.post('/users/login', bodyParser.json(), async (req, res) => {
     // som jeg senere bruger i overall.js til at tjekke om der er en bruger logget ind.
     router.get('/loggedInUser', async (req, res) => {
       try {
-        const loggedInUser = await executeSQL(`SELECT name FROM users WHERE username='${username}' AND password='${password}'`);
+        const loggedInUser = await executeSQL(`SELECT id, name FROM users WHERE username='${username}' AND password='${password}'`);
         res.send(loggedInUser);
       } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
       }
-
     }); 
 
   } else { // Hvis der ikke er nogen resultater i databasen
@@ -61,7 +60,7 @@ module.exports = router;
 
 router.get('/users', async (req, res) => {
   try {
-    const result = await executeSQL("SELECT * FROM users");
+    const result = await executeSQL(`SELECT id, name FROM users WHERE username='${username}' AND password='${password}'`);
     res.send(result);
   } catch (error) {
     console.log(error);
@@ -70,6 +69,12 @@ router.get('/users', async (req, res) => {
 }); 
 
 
+// Log ud funktion 
+router.delete('/loggedInUser', (req, res) => {
+  // Fjern dataen i loggedInUser
+  loggedInUser = null;
+  res.redirect('/index.html'); // Omdiriger til index.html efter sletning
+});
 
 
 
