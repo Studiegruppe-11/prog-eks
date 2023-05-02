@@ -10,14 +10,10 @@ const bodyParser = require('body-parser');
 // undersøg om login er korrekt.
 router.post('/users/login', bodyParser.json(), async (req, res) => {
   const { username, password } = req.body;
-  
   // tager navne fra login.js og ser om det passer med databasen.
   const result = await executeSQL(`SELECT * FROM users WHERE username='${username}' AND password='${password}'`);
-  
   if (Object.keys(result).length> 0 ) { // Hvis der er mindst et resultat fra databasen
     res.json({ success: true }); // Send JSON tilbage med success sat til true
-
-
     // hvis password og brugernavn stemmer overens oprettes dette endpoint som gemmer brugerens navn i http://localhost:3000/loggedInUser. 
     // som jeg senere bruger i overall.js til at tjekke om der er en bruger logget ind.
     router.get('/loggedInUser', async (req, res) => {
@@ -29,12 +25,9 @@ router.post('/users/login', bodyParser.json(), async (req, res) => {
         res.status(500).send(error.message);
       }
     }); 
-
   } else { // Hvis der ikke er nogen resultater i databasen
     res.json({ error: "Forkert brugernavn eller adgangskode" }); // Send JSON tilbage med en fejlmeddelelse
   }
-
-
   });
 
 
