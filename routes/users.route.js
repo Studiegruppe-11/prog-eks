@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 
 
+
+
 // undersøg om login er korrekt.
 router.post('/users/login', bodyParser.json(), async (req, res) => {
   const { username, password } = req.body;
@@ -49,11 +51,11 @@ module.exports = router;
 
 
 
-// Nedenunder er en test for at se alle brugere. 
 
+// Se alle brugere
 router.get('/users', async (req, res) => {
   try {
-    const result = await executeSQL(`SELECT id, name FROM users WHERE username='${username}' AND password='${password}'`);
+    const result = await executeSQL(`SELECT * FROM users`);
     res.send(result);
   } catch (error) {
     console.log(error);
@@ -62,17 +64,18 @@ router.get('/users', async (req, res) => {
 }); 
 
 
+
 // Log ud funktion 
-router.delete('/loggedInUser', (req, res) => {
-  // Fjern dataen i loggedInUser
-  loggedInUser = null;
-  res.redirect('/index.html'); // Omdiriger til index.html efter sletning
+router.put('/loggedInUser', async (req, res) => {
+  try {
+    res.send({});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
 });
 
 
-
-
-// routes 
 
 
   
