@@ -15,11 +15,11 @@ router.post('/users/login', bodyParser.json(), async (req, res) => {
 
 
     const user = result[1];
-    
+
     // Gem brugerens id og navn i express-session
     req.session.userId = user.user_id;
     req.session.name = user.name;
-    
+
     res.json({ success: true });
   } else {
     res.json({ error: "Forkert brugernavn eller adgangskode" });
@@ -84,6 +84,18 @@ router.post('/logout', (req, res) => {
 
 
 
+
+
+// endpoint til at se brugerens favoritter
+router.get('/favorites', async (req, res) => {
+  try {
+    const result = await executeSQL(`SELECT * FROM favoritArtikler WHERE user_id = ${req.session.userId} `);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
 
 
 
