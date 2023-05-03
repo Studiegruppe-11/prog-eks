@@ -1,6 +1,7 @@
 //app.js i root
 const express = require("express");
 const app = express();
+const session = require('express-session')
 
 
 const newsRoutes = require("./routes/users.route");
@@ -16,6 +17,9 @@ const weatherRoutes = require("./routes/weather.route");
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
 app.use("/", weatherRoutes);
+
+
+
 
 app.listen(3000, () => {
   console.log("App listening on port 3000");
