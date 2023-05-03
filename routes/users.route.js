@@ -5,12 +5,13 @@ const { executeSQL } = require('../controllers/executeSQL.js');
 // skal bruges for at analysere JSON-data, der sendes i anmodnings krop. 
 const bodyParser = require('body-parser');
 
+
+
 // undersøg om login er korrekt.
 router.post('/users/login', bodyParser.json(), async (req, res) => {
   const { username, password } = req.body;
   // tager navne fra login.js og ser om det passer med databasen.
   const result = await executeSQL(`SELECT * FROM users WHERE username='${username}' AND password='${password}'`);
-  console.log(result[1].user_id);
   if (Object.keys(result).length > 0) { // Hvis der er mindst et resultat fra databasen
 
 
@@ -87,49 +88,19 @@ router.post('/logout', (req, res) => {
 
 
 // endpoint til at se brugerens favoritter
+
+// innerjoiner favorite_articles og news, hvor news_id og user_id er på samme row.
 router.get('/favorites', async (req, res) => {
   try {
-    const result = await executeSQL(`SELECT * FROM favoritArtikler WHERE user_id = ${req.session.userId} `);
+    const result = await executeSQL(`SELECT news.title, news.author, news.url
+    FROM favorite_articles
+    INNER JOIN news ON favorite_articles.news_id = news.news_id
+    WHERE favorite_articles.user_id = ${req.session.userId} `);
+    console.log(result); // tilføjet logning
     res.send(result);
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
   }
 });
-
-
-
-
-
-// IK SLET HERFRA
-
-
-
-// router.get('/loggedInUser', async (req, res) => {
-//   try {
-//     const loggedInUser = await executeSQL(`SELECT user_id, name FROM users WHERE username='${username}' AND password='${password}'`);
-//     res.send(loggedInUser);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send(error.message);
-//   }
-// });
-
-
-    // TIL HER
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
