@@ -1,7 +1,17 @@
 //app.js i root
 const express = require("express");
 const app = express();
-const session = require('express-session')
+
+const session = require('express-session');
+// Tilføj session middleware
+app.use(session({
+  secret: 'my-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+
+
 
 
 const newsRoutes = require("./routes/users.route");
@@ -10,13 +20,22 @@ const weatherRoutes = require("./routes/weather.route");
 
 
 // // hvis den linje nedenuder er aktiv fetcher den hele tiden til DB. derfor ikke gør den aktiv
-//const newsToDB = require("./fetcherToDB/newsToDB");
+// const newsToDB = require("./fetcherToDB/newsToDB");
+
+// const weatherToDB = require("./fetcherToDB/weatherToDB30");
+// const forecastToDB = require("./fetcherToDB/forecastToDB");
+
+
 
 
 // end point til at hente api'er. 
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
 app.use("/", weatherRoutes);
+
+
+
+
 
 
 

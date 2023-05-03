@@ -5,7 +5,10 @@ const { executeSQL } = require("../controllers/executeSQL.js");
 // GET request handler for fetching news data
 router.get("/news", async (req, res) => {
   try {
-    const result = await executeSQL("SELECT * FROM dbo.News");
+
+
+
+    const result = await executeSQL("SELECT * FROM news");
     res.json(result);
   } catch (error) {
     console.log(error);

@@ -20,7 +20,8 @@ router.get('/weatherForecast', async (req, res) => {
 // henter alt fra historiskevejrdata tabellen som vi bruger til at se historisk vejr
 router.get('/historiskVejrData', async (req, res) => {
   try {
-    const result = await executeSQL('SELECT * FROM weatherLastThirty');
+    // skal tage de sidste 30 rækker fra tabellen. 
+    const result = await executeSQL('SELECT top (30) * FROM weatherLastThirty ORDER BY Id DESC');
     res.json(result);
   } catch (error) {
     console.error(error);
