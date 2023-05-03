@@ -14,35 +14,50 @@ router.post('/users/login', bodyParser.json(), async (req, res) => {
   const { username, password } = req.body;
   // tager navne fra login.js og ser om det passer med databasen.
   const result = await executeSQL(`SELECT * FROM users WHERE username='${username}' AND password='${password}'`);
-  if (Object.keys(result).length> 0 ) { // Hvis der er mindst et resultat fra databasen
+  if (Object.keys(result).length > 0) { // Hvis der er mindst et resultat fra databasen
     res.json({ success: true }); // Send JSON tilbage med success sat til true
     // hvis password og brugernavn stemmer overens oprettes dette endpoint som gemmer brugerens navn i http://localhost:3000/loggedInUser. 
     // som jeg senere bruger i overall.js til at tjekke om der er en bruger logget ind.
-    router.get('/loggedInUser', async (req, res) => {
-      try {
-        const loggedInUser = await executeSQL(`SELECT id, name FROM users WHERE username='${username}' AND password='${password}'`);
-        res.send(loggedInUser);
-      } catch (error) {
-        console.log(error);
-        res.status(500).send(error.message);
-      }
-    }); 
+
+
+
+    // IK SLET HERFRA
+
+
+    //localStorage.setItem('loggedInUser', JSON.stringify(result));
+
+    // router.get('/loggedInUser', async (req, res) => {
+    //   try {
+    //     const loggedInUser = await executeSQL(`SELECT id, name FROM users WHERE username='${username}' AND password='${password}'`);
+    //     res.send(loggedInUser);
+    //   } catch (error) {
+    //     console.log(error);
+    //     res.status(500).send(error.message);
+    //   }
+    // }); 
+
+
+    // TIL HER
+
+
+
+
   } else { // Hvis der ikke er nogen resultater i databasen
     res.json({ error: "Forkert brugernavn eller adgangskode" }); // Send JSON tilbage med en fejlmeddelelse
   }
-  });
+});
 
 
 // opret bruger
 // Får data fra opret.js og sender det til databasen.
 router.post('/users/create', bodyParser.json(), async (req, res) => {
   const { name, favorite, username, password } = req.body;
-  
+
   // Udfør SQL-queries med variablerne
   const result = await executeSQL(`INSERT INTO users (name, favorite, username, password) VALUES ('${name}', '${favorite}', '${username}', '${password}')`);
-  
+
   res.json(result);
-  });
+});
 
 
 module.exports = router;
@@ -61,24 +76,15 @@ router.get('/users', async (req, res) => {
     console.log(error);
     res.status(500).send(error.message);
   }
-}); 
-
-
-
-// Log ud funktion 
-router.put('/loggedInUser', async (req, res) => {
-  try {
-    res.send({});
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
-  }
 });
 
 
 
 
-  
+
+
+
+
 
 
 
