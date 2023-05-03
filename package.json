@@ -12,6 +12,7 @@
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "save": "^2.9.0",
     "tedious": "^16.0.0",
     "tedious-connection-pool": "^1.0.5"
   },
