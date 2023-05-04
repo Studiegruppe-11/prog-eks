@@ -1,3 +1,5 @@
+const cron = require('node-cron');
+//GitHub-side.
 const axios = require("axios");
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
@@ -95,4 +97,9 @@ function executeNextRequest() {
   }
 }
 
-run();
+
+
+// Er sat til at køre hver dag kl 14:00
+cron.schedule('0 14 * * *', () => {
+  run();
+});

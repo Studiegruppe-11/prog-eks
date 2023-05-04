@@ -137,6 +137,10 @@ a {
 
 }
 
+.fa.fa-heart {
+    cursor: pointer;
+  }
+
 .read {
     font-size: 10px;
     color: white;

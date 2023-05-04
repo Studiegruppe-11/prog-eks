@@ -1,5 +1,6 @@
 
-
+const cron = require('node-cron');
+//GitHub-side.
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
 const config = require("../database/config.json");
@@ -81,5 +82,7 @@ async function fetchWeatherDataAndInsert() {
     console.error("Error fetching and inserting weather data:", error);
   }
 }
-
-fetchWeatherDataAndInsert();
+// Sat til at køre kl 14 hver dag
+cron.schedule('0 14 * * *', () => {
+  fetchWeatherDataAndInsert();
+});

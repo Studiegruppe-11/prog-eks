@@ -1,3 +1,5 @@
+const cron = require('node-cron');
+//GitHub-side.
 // Import necessary modules
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
@@ -73,4 +75,8 @@ async function fetchWeatherDataAndInsert() {
 }
 
 // Run the function to fetch and insert weather data
-fetchWeatherDataAndInsert();
+
+// Sat til at køre kl 14 hver dag
+cron.schedule('0 14 * * *', () => {
+  fetchWeatherDataAndInsert();
+});

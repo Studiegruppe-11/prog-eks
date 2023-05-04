@@ -87,6 +87,8 @@ router.post('/logout', (req, res) => {
 
 
 
+
+
 // endpoint til at se brugerens favoritter
 
 // innerjoiner favorite_articles og news, hvor news_id og user_id er på samme row.
@@ -104,3 +106,101 @@ router.get('/favorites', async (req, res) => {
   }
 });
 
+
+
+
+// gem favoritter
+router.post('/favorites', bodyParser.json(), async (req, res) => {
+
+  // news_id bliver gemt i scriptnews.js
+  const news_id = req.body.news_id;
+  const result = await executeSQL(`INSERT INTO favorite_articles (news_id, user_id) VALUES ('${news_id}', '${req.session.userId}')`);
+  res.json(result);
+});
+
+
+
+
+
+// gem user_id og news_id i read_articles
+router.post('/readArticles', bodyParser.json(), async (req, res) => {
+
+  // news_id bliver gemt i scriptnews.js
+  const news_id = req.body.news_id;
+  const result = await executeSQL(`INSERT INTO read_articles (news_id, user_id) VALUES ('${news_id}', '${req.session.userId}')`);
+  res.json(result);
+});
+
+
+
+// router.get('/readArticles', async (req, res) => {
+//   try {
+//     const result = await executeSQL(`SELECT news_id, user_id FROM read_articles WHERE user_id = ${req.session.userId}`);
+//     res.send(result);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error.message);
+//   }
+// });
+
+
+
+// find alle artikler en bruger har læst
+router.get('/readArticles', async (req, res) => {
+  try {
+    const result = await executeSQL(`SELECT news.title, news.author, news.url
+    FROM read_articles
+    INNER JOIN news ON read_articles.news_id = news.news_id
+    WHERE read_articles.user_id = ${req.session.userId} `);
+    console.log(result); // tilføjet logning
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
+
+
+
+
+
+
+// Her laves route til opdatering af bruger (password)
+
+
+router.put('/users/update', async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    const password = req.body.password;
+    await executeSQL`UPDATE users SET password = ${password} WHERE user_id = ${userId}`;
+    res.json({ success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
+
+
+
+
+// Slet Profil  
+// Delete user endpoint
+router.delete('/users', async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    if (!userId) {
+      res.status(401).send('Bruger er ikke logget ind');
+      return;
+    }
+    await executeSQL(`DELETE FROM favorite_articles WHERE user_id=${userId}`);
+    await executeSQL(`DELETE FROM read_articles WHERE user_id=${userId}`);
+    await executeSQL(`DELETE FROM users WHERE user_id=${userId}`);
+    req.session.destroy();
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
