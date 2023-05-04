@@ -13,18 +13,18 @@ app.use(session({
 
 
 
-
+// hent routes
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
 
 // // hvis den linje nedenuder er aktiv fetcher den hele tiden til DB. derfor ikke gør den aktiv
-// const newsToDB = require("./fetcherToDB/newsToDB");
+const newsToDB = require("./fetcherToDB/newsToDB");
+const weatherToDB = require("./fetcherToDB/weatherToDB30");
+const forecastToDB = require("./fetcherToDB/forecastToDB");
 
-// const weatherToDB = require("./fetcherToDB/weatherToDB30");
-// const forecastToDB = require("./fetcherToDB/forecastToDB");
-
+ 
 
 
 

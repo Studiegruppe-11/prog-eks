@@ -50,24 +50,88 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  // viser de første 7 nyheder med laveste id. oven over viser den de nederste 7 nyheder med højeste id, så de nyeste nyheder vises først.
+
+
+
+  // Hvis man klikker på det røde hjerte, så gemmes nyheden i favoritter.
+
+  for (let i = 0; i < 7; i++) {
+    document.getElementById(`news${i}save`).addEventListener("click", async () => {
+      const response = await fetch('/loggedIn');
+      const result = await response.json();
+
+      if (result.userId) {
+        alert("Nyheden er gemt i favoritter");
+        const savedNewsId = { news_id: data[(antalNyheder - 7 + i)].news_id };
+
+        // lad os antage dataen længden er på 326. AntalNyheder er derfor 326 +1 = 327. 
+
+        // Klikkes der på den store nyhed med id news0save vil den sige 327-7+0 = 320.
+
+        // Send variablerne til serveren
+        fetch("/favorites", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(savedNewsId),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log(response.status);
+            } else {
+              console.log(response.status);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        alert("Du skal være logget ind for at kunne gemme nyheder")
+      }
+    });
+  }
+
+
 
   // for (let i = 0; i < 7; i++) {
+  //   document.getElementById(`linknews${i}`).addEventListener("click", async () => {
+  //     const response = await fetch('/loggedIn');
+  //     const result = await response.json();
+  //     const response2 = await fetch('/readArticles');
+  //     const result2 = await response2.json();
 
+  //     if (result.userId) {
+  //       const readArticles = { news_id: data[(antalNyheder - 7 + i)].news_id };
+  //       // Send variablerne til serveren
+  //       fetch("/readArticles", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(readArticles),
+  //       })
+  //         .then((response) => {
+  //           if (response.ok) {
+  //             console.log(response.status);
+  //           } else {
+  //             console.log(response.status);
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
 
-  //   headnews[i] = data[(i + 1).toString()].title;
-  //   newspaper[i] = headnews[i].substr(headnews[i].lastIndexOf("-") + 1).trim();
-  //   headnews[i] = headnews[i].substr(0, headnews[i].lastIndexOf("-")).trim();
+  //       window.location.reload();
+  //     }
 
-  //   imgnews[i] = data[(i + 1).toString()].imageUrl;
-  //   urlnews[i] = data[(i + 1).toString()].url;
+      // if (result.userId && readArticles.news_id === result2.news_id) {
 
-
-  //   document.getElementById(`headnews${i}`).innerHTML = headnews[i];
-  //   document.getElementById(`imgnews${i}`).innerHTML = '<img src="' + imgnews[i] + '">';
-  //   document.getElementById(`newspaper${i}`).innerHTML = newspaper[i];
-  //   document.getElementById(`linknews${i}`).innerHTML = '<a href="' + urlnews[i] + '">Læs mere</a>';
-
+      //   document.getElementById(`news${i}readcheck`).innerHTML += `<p id="read${i}" class="read">Allerede læst</p>`;
+      // }
+      // else {
+      //   document.getElementById(`news${i}readcheck`).innerHTML = " ";
+      // }
 
   // }
 
@@ -76,88 +140,41 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
-
-
-
-  // ALT UNDER HER ER FRA DEN GAMLE OPGAVE
-
-
-
-
-
-  // Hvis man klikker på det røde hjerte, så gemmes nyheden i localstorage
   for (let i = 0; i < 7; i++) {
-    document.getElementById(`news${i}save`).addEventListener("click", function () {
-      if (localStorage.getItem('Success') === 'true') {      // Man skal være logget ind. '
-        alert("Nyheden er gemt i favoritter"); // Alert, der siger at den er gemt.
+    document.getElementById(`linknews${i}`).addEventListener("click", async () => {
+      const response = await fetch('/loggedIn');
+      const result = await response.json();
+      window.location.reload();
 
-        user.favoriteArticles.articleTitel = [];
-        user.favoriteArticles.articleUrl = [];
-        user.favoriteArticles.articleImg = [];
-        user.favoriteArticles.articleNewspaper = [];
+      if (result.userId) {
+        const readArticles = { news_id: data[(antalNyheder - 7 + i)].news_id };
 
-
-        user.favoriteArticles.articleTitel[i] = data.articles[i].title;
-        user.favoriteArticles.articleUrl[i] = data.articles[i].url;
-        user.favoriteArticles.articleImg[i] = data.articles[i].urlToImage;
-        user.favoriteArticles.articleNewspaper[i] = data.articles[i].source.name;
-
-
-
-        window.localStorage.setItem("user", JSON.stringify(user));
-
-
-
-        // Her gemmes artiklerne i localstorage.
-        localStorage.setItem(`favoritetitle${i}`, data.articles[i].title);
-        localStorage.setItem(`favoriteimg${i}`, data.articles[i].urlToImage);
-        localStorage.setItem(`favoritenewspaper${i}`, data.articles[i].source.name);
-        localStorage.setItem(`favoriteurl${i}`, data.articles[i].url);
-
-
-
-      } else { // Hvis man ikke er logget ind, og man klikker på det røde hjerte, får man at vide, at man skal være logget ind.
-        alert("Du skal være logget ind for at kunne gemme nyheder")
+        fetch("/readArticles", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(readArticles),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log(response.status);
+            } else {
+              console.log(response.status);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     });
   }
 
-  // Følgende kode, er for at se, om man har læst nyheden.
-  // Problemet med koden er, når der kommer nye nyheder eller hvis man søger på nyheder, vil der stadig stå, at den allerede er læst. 
-
-  // Loop fra 0-7. Eventlistner på alle linknews. Hvis man er logget ind, gemmes der i localstorage at den er læst.
-  // Siden reloades, og der sættes et p tag med "allerede læst" ind i div'en.
-  for (let i = 0; i < 7; i++) {
-    document.getElementById(`linknews${i}`).addEventListener("click", function () {
-      if (localStorage.getItem('Success') === "true") {  // man skal være logget ind, før siden husker om man har læst nyheden. 
-
-        localStorage.setItem(`news${i}read`, "true");
-
-        window.location.reload();
-
-      }
 
 
-    });
 
-    // Når siden bliver realoaded og man er logget ind bliver der tjekket om der er gemt noget i localstorage. Hvis der er gemt noget i localstorage
-    // så sættes der en p tag med "allerede læst" ind i div'en.
-    // ellers er den forsat tom. 
 
-    if (localStorage.getItem(`news${i}read`) === "true" && localStorage.getItem('Success') === "true") {
 
-      document.getElementById(`news${i}readcheck`).innerHTML += `<p id="read${i}" class="read">Allerede læst</p>`;
-    }
-    else {
-      document.getElementById(`news${i}readcheck`).innerHTML = " ";
-    }
-  }
+
 
 });
-
-
-
-
-
-
-
