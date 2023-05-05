@@ -1,6 +1,7 @@
-//app.js i root
+// app.js
 const express = require("express");
 const app = express();
+require("dotenv").config();
 
 const session = require("express-session");
 // Tilføj session middleware
