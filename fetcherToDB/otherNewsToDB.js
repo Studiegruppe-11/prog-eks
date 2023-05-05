@@ -11,7 +11,6 @@ function connect() {
   return new Promise((resolve, reject) => {
     connection.on("connect", (err) => {
       if (err) {
-        console.error("Error connecting to Azure SQL Database:", err);
         reject(err);
       } else {
         console.log("Connected to Azure SQL Database");
@@ -35,17 +34,14 @@ async function run() {
 
 async function fetchNewsData() {
   const apiKey = "76f75a64df822404917924ff644f98d7";
-  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=5`;
+  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
 
   const response = await axios.get(url);
-  console.log("API response:", response.data);
 
-  if (response.data.status === "success") {
-    console.log("Fetched news data successfully");
-    const articles = response.data.data;
-    const promises = articles.map(insertNewsData);
-    await Promise.all(promises);
-  }
+  console.log("Fetched news data successfully");
+  const articles = response.data.data;
+  const promises = articles.map(insertNewsData);
+  await Promise.all(promises);
 }
 
 const requestQueue = [];
@@ -53,33 +49,31 @@ const requestQueue = [];
 async function insertNewsData(article) {
   return new Promise((resolve, reject) => {
     const insertQuery = `
-      INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
+            INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
       VALUES (@title, @author, @description, @url, @publishedAt, @imageUrl);
     `;
 
-    console.log("Inserting article:", article);
-
     const request = new Request(insertQuery, (err) => {
       if (err) {
-        console.error("Error inserting article:", article, err);
         reject(err);
       } else {
-        console.log("Inserted article:", article);
+        console.log("Query finished executing");
         resolve();
         executeNextRequest();
       }
     });
 
-    request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("author", TYPES.NVarChar, article.author);
+    request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("description", TYPES.NVarChar, article.description);
     request.addParameter("url", TYPES.NVarChar, article.url);
+    request.addParameter("source", TYPES.NVarChar, article.source);
+    request.addParameter("imageUrl", TYPES.NVarChar, article.image);
     request.addParameter(
       "publishedAt",
       TYPES.DateTime2,
       new Date(article.published_at)
     );
-    request.addParameter("imageUrl", TYPES.NVarChar, article.image);
 
     requestQueue.push(request);
 
@@ -90,9 +84,19 @@ async function insertNewsData(article) {
   });
 }
 
-run();
+function executeNextRequest() {
+  // Remove the completed request from the queue and execute the next request (if any)
+  requestQueue.shift();
 
-// Uncomment the line below to set the cron job
-// cron.schedule("0 14 * * *", () => {
-//   run();
-// });
+  if (requestQueue.length > 0) {
+    connection.execSql(requestQueue[0]);
+  }
+}
+
+// Kaldes nu med cron i stedet, derfor udkommenteret.
+// run();
+
+//Er sat til at køre hver dag kl 14:00
+cron.schedule("0 14 * * *", () => {
+  run();
+});
