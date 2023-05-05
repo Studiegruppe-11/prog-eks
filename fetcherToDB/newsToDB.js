@@ -99,7 +99,7 @@ function executeNextRequest() {
 
 
 
-// Er sat til at køre hver dag kl 14:00
+//Er sat til at køre hver dag kl 14:00
 cron.schedule('0 14 * * *', () => {
   run();
 });
