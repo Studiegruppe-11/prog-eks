@@ -1,10 +1,9 @@
-const cron = require('node-cron');
+const cron = require("node-cron");
 //GitHub-side.
 // Import necessary modules
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
-const config = require("../database/config.json");
-
+const config = require("../database/config.js");
 
 // Define Visual Crossing Weather API URL
 const apiUrl =
@@ -78,9 +77,6 @@ async function fetchWeatherDataAndInsert() {
 
 // Sat til at køre kl 14 hver dag
 
-cron.schedule('0 14 * * *', () => {
+cron.schedule("0 14 * * *", () => {
   fetchWeatherDataAndInsert();
-
 });
-
-

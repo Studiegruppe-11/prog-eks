@@ -1,11 +1,11 @@
-
-const cron = require('node-cron');
+const cron = require("node-cron");
 //GitHub-side.
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
-const config = require("../database/config.json");
+const config = require("../database/config.js");
 
-const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=55.68&longitude=12.57&daily=weathercode,temperature_2m_max,sunrise,sunset&timezone=Europe%2FBerlin";
+const apiUrl =
+  "https://api.open-meteo.com/v1/forecast?latitude=55.68&longitude=12.57&daily=weathercode,temperature_2m_max,sunrise,sunset&timezone=Europe%2FBerlin";
 
 const deleteQuery = `
   DELETE FROM dbo.weatherForecast
@@ -83,6 +83,6 @@ async function fetchWeatherDataAndInsert() {
   }
 }
 // Sat til at køre kl 14 hver dag
-cron.schedule('0 14 * * *', () => {
+cron.schedule("0 14 * * *", () => {
   fetchWeatherDataAndInsert();
 });

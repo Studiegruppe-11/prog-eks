@@ -7,7 +7,7 @@ const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 
 // Variables
-const config = require("../database/config.json");
+const config = require("../database/config.js");
 
 // Function that returns a promise
 const executeSQL = (query) => {
