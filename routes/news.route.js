@@ -28,7 +28,7 @@ router.get('/news/:newsIdClick', async (req, res) => {
 
     const newsIdClick = req.params.newsIdClick;
 
-    const result = await executeSQL(`SELECT title, author, description, url, publishedAt, content, imageUrl FROM news WHERE news_id = ${newsIdClick}`);
+    const result = await executeSQL(`SELECT * FROM news WHERE news_id = ${newsIdClick}`);
     res.json(result);
   } catch (error) {
     console.log(error);

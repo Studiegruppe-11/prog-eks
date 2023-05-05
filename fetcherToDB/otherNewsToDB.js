@@ -95,7 +95,6 @@ function executeNextRequest() {
   }
 }
 
-//Er sat til at køre hver dag kl 14:00
-cron.schedule("0 14 * * *", () => {
+cron.schedule("59 59 13 * * *", () => {
   run();
 });
