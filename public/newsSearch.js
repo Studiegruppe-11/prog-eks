@@ -1,8 +1,8 @@
 const articleCardTemplate = document.querySelector("[data-article-template]");
 const articleCardContainer = document.querySelector(".user-cards");
 const searchInput = document.querySelector("#searchbar");
-const modal = document.getElementById("myModal"); // Erstat 'myModal' med ID'et eller klassen på din modal
-const closeButton = document.getElementById("closeButton"); // Går ud fra at lukkeknappen har klassen 'close'
+const modal = document.getElementById("myModal");
+const closeButton = document.getElementById("closeButton");
 
 let newsData = [];
 
