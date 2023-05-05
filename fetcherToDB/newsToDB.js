@@ -52,7 +52,7 @@ async function fetchNewsData() {
 const requestQueue = [];
 
 async function insertNewsData(article) {
-  if (!article.image) {
+  if (!article.urlToImage) {
     // skip articles without images
     console.log("Skipping article with no image:", article.title);
     return;
