@@ -38,7 +38,6 @@ async function run() {
 
 async function fetchNewsData() {
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
-  console.log("Dette er url:", url);
 
   const response = await axios.get(url);
 
@@ -97,9 +96,9 @@ function executeNextRequest() {
 }
 
 // Kaldes nu med cron i stedet, derfor udkommenteret.
-run();
+// run();
 
 //Er sat til at køre hver dag kl 14:00
-// cron.schedule("0 14 * * *", () => {
-//   run();
-// });
+cron.schedule("0 14 * * *", () => {
+  run();
+});

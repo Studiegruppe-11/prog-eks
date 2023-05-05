@@ -14,36 +14,20 @@ router.get("/news", async (req, res) => {
   }
 });
 
-
 //vis en enkelt nyhed med links og billede på en seperat side
 
-
-router.get('/news/:newsIdClick', async (req, res) => {
-
-
-
+router.get("/news/:newsIdClick", async (req, res) => {
   try {
-
     const newsIdClick = req.params.newsIdClick;
 
-    const result = await executeSQL(`SELECT * FROM news WHERE news_id = ${newsIdClick}`);
+    const result = await executeSQL(
+      `SELECT * FROM news WHERE news_id = ${newsIdClick}`
+    );
     res.json(result);
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
   }
-
-
 });
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
