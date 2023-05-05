@@ -34,16 +34,14 @@ async function run() {
 
 async function fetchNewsData() {
   const apiKey = "76f75a64df822404917924ff644f98d7";
-  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=50`;
+  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
 
   const response = await axios.get(url);
 
-  if (response.data.status === "success") {
-    console.log("Fetched news data successfully");
-    const articles = response.data.data;
-    const promises = articles.map(insertNewsData);
-    await Promise.all(promises);
-  }
+  console.log("Fetched news data successfully");
+  const articles = response.data.data;
+  const promises = articles.map(insertNewsData);
+  await Promise.all(promises);
 }
 
 const requestQueue = [];
@@ -51,8 +49,8 @@ const requestQueue = [];
 async function insertNewsData(article) {
   return new Promise((resolve, reject) => {
     const insertQuery = `
-      INSERT INTO News (title, author, description, url, publishedAt, content, imageUrl)
-      VALUES (@title, @author, @description, @url, @publishedAt, @content, @imageUrl);
+            INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
+      VALUES (@title, @author, @description, @url, @publishedAt, @imageUrl);
     `;
 
     const request = new Request(insertQuery, (err) => {
@@ -65,17 +63,17 @@ async function insertNewsData(article) {
       }
     });
 
-    request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("author", TYPES.NVarChar, article.author);
+    request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("description", TYPES.NVarChar, article.description);
     request.addParameter("url", TYPES.NVarChar, article.url);
+    request.addParameter("source", TYPES.NVarChar, article.source);
+    request.addParameter("imageUrl", TYPES.NVarChar, article.image);
     request.addParameter(
       "publishedAt",
       TYPES.DateTime2,
       new Date(article.published_at)
     );
-    request.addParameter("content", TYPES.NVarChar, article.content);
-    request.addParameter("imageUrl", TYPES.NVarChar, article.image);
 
     requestQueue.push(request);
 
@@ -95,6 +93,14 @@ function executeNextRequest() {
   }
 }
 
+<<<<<<< HEAD
 cron.schedule("59 59 13 * * *", () => {
+=======
+// Kaldes nu med cron i stedet, derfor udkommenteret.
+// run();
+
+//Er sat til at køre hver dag kl 14:00
+cron.schedule("0 14 * * *", () => {
+>>>>>>> ac246d2c321d507a03e615e2f7da774b6dbf9ce1
   run();
 });
