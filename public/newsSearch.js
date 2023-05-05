@@ -1,3 +1,4 @@
+// /public/newsSearch.js;
 const articleCardTemplate = document.querySelector("[data-article-template]");
 const articleCardContainer = document.querySelector(".user-cards");
 const searchInput = document.querySelector("#searchbar");
@@ -26,7 +27,8 @@ const filterAndUpdateArticles = (searchQuery) => {
     const title = article.title.toLowerCase();
     const author = article.author && article.author.toLowerCase();
     const description =
-      article.description && article.description.toLowerCase();
+      article.description && article.description.toLowerCase(); // newsSearch.js
+
     return (
       title.includes(searchQuery.toLowerCase()) ||
       (author && author.includes(searchQuery.toLowerCase())) ||
