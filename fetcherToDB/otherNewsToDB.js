@@ -1,6 +1,5 @@
 const cron = require("node-cron");
 const axios = require("axios");
-// fetcherToDB/otherNewsToDB.js
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 const TYPES = require("tedious").TYPES;
@@ -8,8 +7,6 @@ require("dotenv").config({ path: "../.env" });
 
 const config = require("../database/config.json");
 const apiKey = process.env.news2;
-
-console.log(apiKey);
 
 const connection = new Connection(config);
 
@@ -40,6 +37,7 @@ async function run() {
 
 async function fetchNewsData() {
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
+  console.log("Dette er url:", url);
 
   const response = await axios.get(url);
 
