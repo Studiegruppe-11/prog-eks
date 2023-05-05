@@ -38,8 +38,7 @@ async function fetchNewsData() {
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=5`;
 
   const response = await axios.get(url);
-
-  console.log("response.data", response.data);
+  console.log("API response:", response.data);
 
   if (response.data.status === "success") {
     console.log("Fetched news data successfully");
@@ -54,18 +53,20 @@ const requestQueue = [];
 async function insertNewsData(article) {
   return new Promise((resolve, reject) => {
     const insertQuery = `
-      INSERT INTO News (title, author, description, url, publishedAt, content, imageUrl)
-      VALUES (@title, @author, @description, @url, @publishedAt, @content, @imageUrl);
+      INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
+      VALUES (@title, @author, @description, @url, @publishedAt, @imageUrl);
     `;
+
+    console.log("Inserting article:", article);
 
     const request = new Request(insertQuery, (err) => {
       if (err) {
-        console.error("Error executing query for article:", article);
+        console.error("Error inserting article:", article, err);
         reject(err);
       } else {
         console.log("Inserted article:", article);
         resolve();
-        executeNextRequest(); // Add this line back
+        executeNextRequest();
       }
     });
 
@@ -78,7 +79,6 @@ async function insertNewsData(article) {
       TYPES.DateTime2,
       new Date(article.published_at)
     );
-    request.addParameter("content", TYPES.NVarChar, article.content);
     request.addParameter("imageUrl", TYPES.NVarChar, article.image);
 
     requestQueue.push(request);
