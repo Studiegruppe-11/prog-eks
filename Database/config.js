@@ -1,6 +1,8 @@
 const { Connection, Request } = require("tedious");
 require("dotenv").config({ path: "../.env" });
 
+// FIND UD AF HVORFOR ANDRE FILER FUCKER NÅR DE SKAL IMPORTE
+
 const config = {
   server: process.env.DB_SERVER,
   authentication: {
