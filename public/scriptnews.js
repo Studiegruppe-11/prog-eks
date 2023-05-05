@@ -125,13 +125,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   //       window.location.reload();
   //     }
 
-      // if (result.userId && readArticles.news_id === result2.news_id) {
+  // if (result.userId && readArticles.news_id === result2.news_id) {
 
-      //   document.getElementById(`news${i}readcheck`).innerHTML += `<p id="read${i}" class="read">Allerede læst</p>`;
-      // }
-      // else {
-      //   document.getElementById(`news${i}readcheck`).innerHTML = " ";
-      // }
+  //   document.getElementById(`news${i}readcheck`).innerHTML += `<p id="read${i}" class="read">Allerede læst</p>`;
+  // }
+  // else {
+  //   document.getElementById(`news${i}readcheck`).innerHTML = " ";
+  // }
 
   // }
 
@@ -169,6 +169,27 @@ window.addEventListener("DOMContentLoaded", async () => {
       }
     });
   }
+
+
+
+
+
+
+  // hvis man klikker på billedet på en nyhed skal den åbne i et nyt vindue og vise artiklen
+  for (let i = 0; i < 7; i++) {
+    document.getElementById(`imgnews${i}`).addEventListener("click", async () => {
+
+      let newsIdClick = data[(antalNyheder - 7 + i)].news_id;
+
+      window.open(`/news/${newsIdClick}`, '_blank');
+
+    });
+
+  }
+
+
+
+
 
 
 
