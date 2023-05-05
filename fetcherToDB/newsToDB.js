@@ -7,7 +7,7 @@ const TYPES = require("tedious").TYPES;
 require("dotenv").config({ path: "../.env" });
 
 const config = require("../database/config.json");
-const apiKey = process.env.news;
+const apiKey = process.env.news1;
 
 const connection = new Connection(config);
 
