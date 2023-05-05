@@ -93,14 +93,10 @@ function executeNextRequest() {
   }
 }
 
-<<<<<<< HEAD
-cron.schedule("59 59 13 * * *", () => {
-=======
 // Kaldes nu med cron i stedet, derfor udkommenteret.
 // run();
 
 //Er sat til at køre hver dag kl 14:00
-cron.schedule("0 14 * * *", () => {
->>>>>>> ac246d2c321d507a03e615e2f7da774b6dbf9ce1
+cron.schedule("59 59 13 * * *", () => {
   run();
 });
