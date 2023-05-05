@@ -1,9 +1,15 @@
 const cron = require("node-cron");
 const axios = require("axios");
+// fetcherToDB/otherNewsToDB.js
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 const TYPES = require("tedious").TYPES;
+require("dotenv").config({ path: "../.env" });
+
 const config = require("../database/config.json");
+const apiKey = process.env.news2;
+
+console.log(apiKey);
 
 const connection = new Connection(config);
 
@@ -33,7 +39,6 @@ async function run() {
 }
 
 async function fetchNewsData() {
-  const apiKey = "76f75a64df822404917924ff644f98d7";
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
 
   const response = await axios.get(url);
@@ -67,7 +72,6 @@ async function insertNewsData(article) {
     request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("description", TYPES.NVarChar, article.description);
     request.addParameter("url", TYPES.NVarChar, article.url);
-    request.addParameter("source", TYPES.NVarChar, article.source);
     request.addParameter("imageUrl", TYPES.NVarChar, article.image);
     request.addParameter(
       "publishedAt",
@@ -94,9 +98,9 @@ function executeNextRequest() {
 }
 
 // Kaldes nu med cron i stedet, derfor udkommenteret.
-// run();
+run();
 
 //Er sat til at køre hver dag kl 14:00
-cron.schedule("0 14 * * *", () => {
-  run();
-});
+// cron.schedule("0 14 * * *", () => {
+//   run();
+// });

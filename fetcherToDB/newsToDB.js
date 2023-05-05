@@ -1,10 +1,13 @@
+// /fetcherToDB/newsToDB.js
 const cron = require("node-cron");
-//GitHub-side.
 const axios = require("axios");
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 const TYPES = require("tedious").TYPES;
+require("dotenv").config({ path: "../.env" });
+
 const config = require("../database/config.json");
+const apiKey = process.env.news;
 
 const connection = new Connection(config);
 
@@ -34,7 +37,6 @@ async function run() {
 }
 
 async function fetchNewsData() {
-  const apiKey = "e3694cebee5640f0b058c83adedf7fa2";
   const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${apiKey}`;
 
   const response = await axios.get(url);
