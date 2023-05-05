@@ -11,6 +11,7 @@ function connect() {
   return new Promise((resolve, reject) => {
     connection.on("connect", (err) => {
       if (err) {
+        console.error("Error connecting to Azure SQL Database:", err);
         reject(err);
       } else {
         console.log("Connected to Azure SQL Database");
@@ -34,9 +35,11 @@ async function run() {
 
 async function fetchNewsData() {
   const apiKey = "76f75a64df822404917924ff644f98d7";
-  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=50`;
+  const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=5`;
 
   const response = await axios.get(url);
+
+  console.log("response.data", response.data);
 
   if (response.data.status === "success") {
     console.log("Fetched news data successfully");
@@ -57,11 +60,12 @@ async function insertNewsData(article) {
 
     const request = new Request(insertQuery, (err) => {
       if (err) {
+        console.error("Error executing query for article:", article);
         reject(err);
       } else {
-        console.log("Query finished executing");
+        console.log("Inserted article:", article);
         resolve();
-        executeNextRequest();
+        executeNextRequest(); // Add this line back
       }
     });
 
@@ -86,16 +90,9 @@ async function insertNewsData(article) {
   });
 }
 
-function executeNextRequest() {
-  // Remove the completed request from the queue and execute the next request (if any)
-  requestQueue.shift();
+run();
 
-  if (requestQueue.length > 0) {
-    connection.execSql(requestQueue[0]);
-  }
-}
-
-//Er sat til at køre hver dag kl 14:00
-cron.schedule("0 14 * * *", () => {
-  run();
-});
+// Uncomment the line below to set the cron job
+// cron.schedule("0 14 * * *", () => {
+//   run();
+// });
