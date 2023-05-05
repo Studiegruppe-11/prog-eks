@@ -190,12 +190,4 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
-
-
-
-
-
-
-
-
 });
