@@ -50,6 +50,12 @@ async function fetchNewsData() {
 const requestQueue = [];
 
 async function insertNewsData(article) {
+  if (!article.image) {
+    // skip articles without images
+    console.log("Skipping article with no image:", article.title);
+    return;
+  }
+
   return new Promise((resolve, reject) => {
     const insertQuery = `
             INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
@@ -60,7 +66,7 @@ async function insertNewsData(article) {
       if (err) {
         reject(err);
       } else {
-        console.log("Query finished executing");
+        console.log("Uploaded article:", article.title);
         resolve();
         executeNextRequest();
       }
@@ -96,9 +102,9 @@ function executeNextRequest() {
 }
 
 // Kaldes nu med cron i stedet, derfor udkommenteret.
-// run();
+run();
 
 //Er sat til at køre hver dag kl 14:00
-cron.schedule("0 14 * * *", () => {
-  run();
-});
+// cron.schedule("0 14 * * *", () => {
+//   run();
+// });
