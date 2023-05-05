@@ -1,3 +1,4 @@
+// /routes/news.route.js
 const express = require("express");
 const router = express.Router();
 const { executeSQL } = require("../controllers/executeSQL.js");
@@ -5,9 +6,6 @@ const { executeSQL } = require("../controllers/executeSQL.js");
 // GET request handler for fetching news data
 router.get("/news", async (req, res) => {
   try {
-
-
-
     const result = await executeSQL("SELECT * FROM news");
     res.json(result);
   } catch (error) {
