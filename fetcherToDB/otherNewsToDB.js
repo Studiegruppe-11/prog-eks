@@ -1,3 +1,4 @@
+// /fetcherToDB/otherNewsToDB.js
 const cron = require("node-cron");
 const axios = require("axios");
 const Connection = require("tedious").Connection;
