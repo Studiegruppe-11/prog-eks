@@ -89,54 +89,16 @@ window.addEventListener("DOMContentLoaded", async () => {
       });
   }
 
-  // for (let i = 0; i < 7; i++) {
-  //   document.getElementById(`linknews${i}`).addEventListener("click", async () => {
-  //     const response = await fetch('/loggedIn');
-  //     const result = await response.json();
-  //     const response2 = await fetch('/readArticles');
-  //     const result2 = await response2.json();
 
-  //     if (result.userId) {
-  //       const readArticles = { news_id: data[(antalNyheder - 7 + i)].news_id };
-  //       // Send variablerne til serveren
-  //       fetch("/readArticles", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(readArticles),
-  //       })
-  //         .then((response) => {
-  //           if (response.ok) {
-  //             console.log(response.status);
-  //           } else {
-  //             console.log(response.status);
-  //           }
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
 
-  //       window.location.reload();
-  //     }
-
-  // if (result.userId && readArticles.news_id === result2.news_id) {
-
-  //   document.getElementById(`news${i}readcheck`).innerHTML += `<p id="read${i}" class="read">Allerede læst</p>`;
-  // }
-  // else {
-  //   document.getElementById(`news${i}readcheck`).innerHTML = " ";
-  // }
-
-  // }
-
+  // klik på linket til nyheden skal gemme den som læst
   for (let i = 0; i < 7; i++) {
     document
       .getElementById(`linknews${i}`)
       .addEventListener("click", async () => {
         const response = await fetch("/loggedIn");
         const result = await response.json();
-        window.location.reload();
+
 
         if (result.userId) {
           const readArticles = { news_id: data[antalNyheder - 7 + i].news_id };
@@ -162,6 +124,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       });
   }
 
+
+  
   // hvis man klikker på billedet på en nyhed skal den åbne i et nyt vindue og vise artiklen
   for (let i = 0; i < 7; i++) {
     document

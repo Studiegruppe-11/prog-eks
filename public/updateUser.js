@@ -1,5 +1,5 @@
 document.getElementById("skiftKnap").addEventListener("click", async function () {
-    let password = document.getElementById("skiftKode").nodeValue;
+    let password = document.getElementById("skiftKode").value;
 
     const response = await fetch('/users/update', {
         method: 'PUT',
@@ -15,5 +15,6 @@ document.getElementById("skiftKnap").addEventListener("click", async function ()
 
     if (result.success) {
         alert("Din kode er nu ændret");
+        window.location.href = "/index.html";
     }
 });

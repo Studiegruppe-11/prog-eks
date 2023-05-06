@@ -1,43 +1,30 @@
 body {
+    background-color: white;
     font-family: 'Opens Sans', sans-serif;
     font-weight: 300;
-
-}
-
-#creatediv {
     display: flex;
-    flex-direction: column;
-    height: 300;
-    width: 300px;
-    border: 1px solid black;
-    border-radius: 10%;
-    padding: 20px;
-    margin: auto;
-    background-color: rgb(32, 32, 108);
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.forms {
-    height: auto;
-    width: auto;
+h1 {
+    color: rgb(32, 32, 108);
 }
 
-label[for="name"],
-label[for="Favorite"],
-label[for="username"],
-label[for="password"] {
-    color: white;
+.article {
+    margin-top: 30px;
+    background-color: rgb(32, 32, 108);
+    border-radius: 25px;
+    width: 25%;
+    justify-content: center;
+    padding: 5%;
 }
 
-#heading {
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-}
+/* CSS til link */
 
 .button1 {
-    display: inline-block;
+    display: block;
     padding: 0.35em 1.2em;
     border: 0.1em solid #FFFFFF;
     margin: 0 0.3em 0.3em 0;

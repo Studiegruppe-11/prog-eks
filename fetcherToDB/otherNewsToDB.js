@@ -38,6 +38,7 @@ async function run() {
 
 async function fetchNewsData() {
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
+  console.log(url);
 
   const response = await axios.get(url);
 
@@ -57,6 +58,8 @@ async function insertNewsData(article) {
   }
 
   return new Promise((resolve, reject) => {
+    const imageUrl = article.image.split("?")[0];
+
     const insertQuery = `
             INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
       VALUES (@title, @author, @description, @url, @publishedAt, @imageUrl);
@@ -102,9 +105,12 @@ function executeNextRequest() {
 }
 
 // Kaldes nu med cron i stedet, derfor udkommenteret.
-run();
+// run();
 
-//Er sat til at køre hver dag kl 14:00
-// cron.schedule("0 14 * * *", () => {
-//   run();
-// });
+
+//Er sat til at køre hver dag kl 12:59:55.
+cron.schedule("55 59 12 * * *", () => {
+  run();
+});
+
+

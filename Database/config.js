@@ -17,9 +17,5 @@ let config = {
   },
 };
 
-console.log(process.env.DB_SERVER);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_NAME);
 
 module.exports = config;

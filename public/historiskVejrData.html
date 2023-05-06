@@ -9,26 +9,67 @@
 
 
 <style>
+  
+  body {
+    background-color: rgb(32, 32, 108);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h1 {
+    color: white
+  }
+  
+  a {
+    color: white;
+  }
+  
+  p {
+    text-align: center;
+    color: white;
+  }
+  
+  /* Kilde til nedenstående CSS: https://fdossena.com/?p=html5cool/buttons/i.frag */
+  .button1 {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  
+  .button1:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+    cursor: pointer;
 
-
-
-p {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-
-
-</style>
+  }
+  
+  @media all and (max-width: 30em) {
+    a.button1 {
+      display: block;
+      margin: 0.4em auto;
+    }
+  }
+  
+  </style>
+  
 
 
 
 <body>
     <h1>Her ses vejdata for de sidste 30 dage</h1>
     
-
-    <a href="index.html">Tilbage til forsiden</a>
-<br>
+    <a href="index.html" class="button1">Til Forsiden</a><br>
 
  
 
