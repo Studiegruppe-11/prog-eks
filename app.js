@@ -28,7 +28,9 @@ const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
-// // hvis den linje nedenuder er aktiv fetcher den hele tiden til DB. derfor ikke gør den aktiv
+
+
+// Disse skal bruges til at hente data fra API'er og gemme dem i databasen. De kører hver dag kl 14.00. 
 const newsToDB = require("./fetcherToDB/newsToDB");
 const otherNewsToDB = require("./fetcherToDB/otherNewsToDB");
 const weatherToDB = require("./fetcherToDB/weatherToDB30");
