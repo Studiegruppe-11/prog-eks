@@ -1,0 +1,38 @@
+body {
+    background-color: white;
+    font-family: 'Opens Sans', sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: rgb(32, 32, 108);
+}
+
+h2,
+p,
+a {
+    color: white;
+}
+
+article {
+    margin-top: 50px;
+    background-color: rgb(32, 32, 108);
+    padding: 30px;
+    border-radius: 25px;
+
+}
+
+article img {
+    width: 300px;
+    height: 150px;
+}
+
+/* CSS til link */
+a {
+    display: block;
+
+}

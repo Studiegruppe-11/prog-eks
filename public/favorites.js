@@ -26,6 +26,12 @@ window.addEventListener("DOMContentLoaded", async () => {
                 const authorElement = document.createElement("p");
                 authorElement.innerText = "By " + favorite.author;
                 articleElement.appendChild(authorElement);
+ 
+
+                const imageElement = document.createElement("img");
+                imageElement.src = favorite.imageUrl;
+                articleElement.appendChild(imageElement);
+
 
                 const linkElement = document.createElement("a");
                 linkElement.href = favorite.url;

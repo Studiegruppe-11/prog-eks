@@ -1,34 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { executeSQL } = require('../controllers/executeSQL.js');
+const { getWeatherForecast, getHistoriskVejrData } = require('../controllers/weather.controller.js');
 
-// This route gets all the weather data from the database using the executeSQL function from executeSQL.js
-
-//henter alt fra weatherForecast tabellen som vi bruger i vores vejrudsigt
-router.get('/weatherForecast', async (req, res) => {
-  try {
-    const result = await executeSQL('SELECT * FROM weatherForecast');
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-});
-
-
-
-// henter alt fra historiskevejrdata tabellen som vi bruger til at se historisk vejr
-router.get('/historiskVejrData', async (req, res) => {
-  try {
-    // skal tage de sidste 30 rækker fra tabellen. 
-    const result = await executeSQL('SELECT top (30) * FROM weatherLastThirty ORDER BY Id DESC');
-    res.json(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-});
+router.get('/weatherForecast', getWeatherForecast);
+router.get('/historiskVejrData', getHistoriskVejrData);
 
 module.exports = router;
-
 
