@@ -48,6 +48,7 @@ async function run() {
 async function fetchNewsData() {
   // URL til mediastack API-endepunktet
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
+  console.log(url);
 
   // Sender en HTTP GET-anmodning til mediastack API
   const response = await axios.get(url);
@@ -62,7 +63,12 @@ const requestQueue = []; // Kø til at håndtere SQL-forespørgsler
 
 // Funktion til at indsætte en enkelt nyhedsartikel i databasen
 async function insertNewsData(article) {
-  if (!article.image) {
+  console.log(article);
+  if (
+    !article.image ||
+    article.image.trim() === "" ||
+    article.image.trim().toLowerCase() === "null"
+  ) {
     // Spring over artikler uden billeder
     console.log("Springer artikel uden billede over:", article.title);
     return;
@@ -93,7 +99,7 @@ async function insertNewsData(article) {
     request.addParameter("title", TYPES.NVarChar, article.title);
     request.addParameter("description", TYPES.NVarChar, article.description);
     request.addParameter("url", TYPES.NVarChar, article.url);
-    request.addParameter("imageUrl", TYPES.NVarChar, imageUrl);
+    request.addParameter("imageUrl", TYPES.NVarChar, article.image);
     request.addParameter(
       "publishedAt",
       TYPES.DateTime2,
@@ -120,6 +126,8 @@ function executeNextRequest() {
     connection.execSql(requestQueue[0]);
   }
 }
+
+run();
 
 // Planlægger run() til at køre dagligt kl. 12:59:55
 cron.schedule("55 59 12 * * *", () => {
