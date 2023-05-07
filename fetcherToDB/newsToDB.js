@@ -9,6 +9,7 @@ require("dotenv").config({ path: "../.env" }); // Indlæser konfigurationsvariab
 
 const config = require("../database/config.js"); // Indlæser databasens konfigurationsfil
 const apiKey = process.env.news1; // Indlæser API-nøglen fra .env-filen
+const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${apiKey}`;
 
 const connection = new Connection(config); // Opretter en ny forbindelse til SQL-databasen
 
@@ -43,8 +44,6 @@ async function run() {
 
 // Funktion til at hente nyhedsdata fra NewsAPI
 async function fetchNewsData() {
-  const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${apiKey}`;
-
   // Sender en HTTP GET-anmodning til NewsAPI med Axios
   const response = await axios.get(url);
 
