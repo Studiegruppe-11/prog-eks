@@ -121,7 +121,7 @@ function executeNextRequest() {
   }
 }
 
-// Planlægger hovedfunktionen til at køre dagligt kl. 12:59:55
+// Planlægger run() til at køre dagligt kl. 12:59:55
 cron.schedule("55 59 12 * * *", () => {
   run();
 });

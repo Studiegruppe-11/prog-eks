@@ -1,13 +1,13 @@
 const cron = require("node-cron");
-//GitHub-side.
-// Import necessary modules
 const axios = require("axios");
 const { Connection, Request, TYPES } = require("tedious");
 const config = require("../database/config.js");
+require("dotenv").config({ path: "../.env" });
 
 // Define Visual Crossing Weather API URL
-const apiUrl =
-  "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/copenhagen/last30days?unitGroup=metric&elements=datetime%2Cname%2Ctemp%2Csunrise%2Csunset%2Cicon&include=days&key=ZRWAZ52ZTKWTNB7BDFVB4M7NQ&contentType=json";
+
+const apiKey = process.env.weather;
+const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/copenhagen/last30days?unitGroup=metric&elements=datetime%2Cname%2Ctemp%2Csunrise%2Csunset%2Cicon&include=days&key=${apiKey}&contentType=json`;
 
 // Define SQL query to insert data into Weather table
 const insertQuery = `
@@ -76,7 +76,6 @@ async function fetchWeatherDataAndInsert() {
 // Run the function to fetch and insert weather data
 
 // Sat til at køre kl 13 hver dag
-
 cron.schedule("0 13 * * *", () => {
   fetchWeatherDataAndInsert();
 });
