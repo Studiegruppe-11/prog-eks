@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     
         if (result.userId) {
         try {
+            // Hent alle favoritartikler fra API'et, som indeholder alle artikler som en bruger har gemt. 
             const response = await fetch("http://localhost:3000/favorites");
             const favorites = await response.json();
 

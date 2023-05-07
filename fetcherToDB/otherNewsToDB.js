@@ -104,10 +104,6 @@ function executeNextRequest() {
   }
 }
 
-// Kaldes nu med cron i stedet, derfor udkommenteret.
-// run();
-
-
 //Er sat til at køre hver dag kl 12:59:55.
 cron.schedule("55 59 12 * * *", () => {
   run();

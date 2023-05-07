@@ -1,8 +1,7 @@
+// bruges i forbindelse med SQL forspørgsler.
 const { executeSQL } = require('../controllers/executeSQL.js');
 
-// This function gets all the weather data from the database using the executeSQL function from executeSQL.js
-
-//henter alt fra weatherForecast tabellen som vi bruger i vores vejrudsigt
+//Henter alt fra weatherForecast tabellen som vi bruger i vores vejrudsigt
 async function getWeatherForecast(req, res) {
   try {
     const result = await executeSQL('SELECT * FROM weatherForecast');
@@ -16,7 +15,7 @@ async function getWeatherForecast(req, res) {
 // henter alt fra historiskevejrdata tabellen som vi bruger til at se historisk vejr
 async function getHistoriskVejrData(req, res) {
   try {
-    // skal tage de sidste 30 rækker fra tabellen. 
+    // skal tage de sidste 30 rækker fra tabellen, så det er de seneste 30 dage, der bliver vist. 
     const result = await executeSQL('SELECT top (30) * FROM weatherLastThirty ORDER BY Id DESC');
     res.json(result);
   } catch (error) {
@@ -25,6 +24,7 @@ async function getHistoriskVejrData(req, res) {
   }
 }
 
+// eksporter funktionerne, så de kan bruges i routes. 
 module.exports = {
   getWeatherForecast,
   getHistoriskVejrData

@@ -15,22 +15,20 @@ async function getAllNews(req, res) {
 
 
 // hent en enkelt nyhed og billede når man klikker på den pågælden nyhed. 
-
 async function getSingleNews(req, res) {
   try {
     const newsIdClick = req.params.newsIdClick;
 
+    // news_id er gemt i klienten. 
     const result = await executeSQL(
       `SELECT * FROM news WHERE news_id = ${newsIdClick}`
     );
-
-
+    // resultatet fra SQL kommer som en json string, så vi parser den til et objekt.
     const title = result[1].title;
     const imageUrl = result[1].imageUrl;
     const description = result[1].description;
     const author = result[1].author;
     const url = result[1].url;
-
 
     // her oprettes en html side med links og billeder og tekst til den nyhed der er blevet klikket på. 
     res.send(`
@@ -74,6 +72,8 @@ async function getSingleNews(req, res) {
       </html>
     `);
 
+    // resultatet af koden er at der kommer en html side op med den nyhed der er blevet klikket på, da endpointet jo er dynamisk, da det er bestemt 
+    // af det news_id der er blevet klikket på.
 
   } catch (error) {
     console.log(error);
@@ -82,5 +82,5 @@ async function getSingleNews(req, res) {
 
 }
 
-
+// eksporter funktionerne så de kan bruges i routes.js
 module.exports = { getAllNews, getSingleNews };

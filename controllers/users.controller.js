@@ -1,9 +1,6 @@
 // users.controller.js i mappen controller
-
-
 // skal bruges til at udføre SQL-queries
 const { executeSQL } = require("./executeSQL.js");
-
 
 // undersøg om login er korrekt.
 async function login(req, res) {
@@ -21,6 +18,7 @@ async function login(req, res) {
     req.session.userId = user.user_id;
     req.session.name = user.name;
 
+    // Send svar tilbage til klienten
     res.json({ success: true });
   } else {
     res.json({ error: "Forkert brugernavn eller adgangskode" });
@@ -66,6 +64,7 @@ async function getLoggedInUser(req, res) {
 async function logout(req, res) {
   try {
     await new Promise((resolve, reject) => {
+      // slet brugerens id og navn fra express-session
       req.session.destroy((err) => {
         if (err) {
           reject(err);
@@ -81,15 +80,21 @@ async function logout(req, res) {
   }
 }
 
-// endpoint til at se brugerens favoritter
+// En async funktion, der håndterer GET-forespørgsler til '/favorites'-endpointet.
+// Funktionen henter de favorit-artikler, der er tilknyttet bruger-id'et fra sessionen i databasen.
 async function getFavorites(req, res) {
   try {
+    // Udfør en SQL-forespørgsel for at hente favorit-artiklerne fra databasen.
+    // Resultatet er en række af nyheds-artikler, der er tilknyttet bruger-id'et.
     const result = await executeSQL(`SELECT news.title, news.author, news.url, news.imageUrl
       FROM favorite_articles
       INNER JOIN news ON favorite_articles.news_id = news.news_id
       WHERE favorite_articles.user_id = ${req.session.userId} `);
+
+    // Send resultatet tilbage til klienten i JSON-format.
     res.send(result);
   } catch (error) {
+    // Hvis der opstår en fejl under udførelsen af SQL-forespørgslen, send en fejlbesked til klienten.
     console.log(error);
     res.status(500).send(error.message);
   }
@@ -100,6 +105,7 @@ async function saveFavorites(req, res) {
   // news_id bliver gemt i scriptnews.js
   const news_id = req.body.news_id;
   const result = await executeSQL(
+    // gemmer news_id og user_id i favorite_articles
     `INSERT INTO favorite_articles (news_id, user_id) VALUES ('${news_id}', '${req.session.userId}')`
   );
   res.json(result);
@@ -110,6 +116,7 @@ async function saveReadArticles(req, res) {
   // news_id bliver gemt i scriptnews.js
   const news_id = req.body.news_id;
   const result = await executeSQL(
+    // indsæt brugerens id og news_id i read_articles tabellen. 
     `INSERT INTO read_articles (news_id, user_id) VALUES ('${news_id}', '${req.session.userId}')`
   );
   res.json(result);
@@ -118,7 +125,6 @@ async function saveReadArticles(req, res) {
 
 
 // se alle artikler en brugeren har læst. bruger her session id til at finde brugeren, som er den bruger der er logget ind. 
-
 // herefter et innerjoin mellem news, readarticles og user. 
 async function getReadArticles(req, res) {
   try {
@@ -135,8 +141,7 @@ async function getReadArticles(req, res) {
 }
 
 
-// slet bruger. sletter først alle artikler og læsteartikler brugeren har gemt og derefter brugeren. 
-
+// slet bruger. sletter først alle artikler og læsteartikler brugeren har gemt og derefter brugeren, da der er foreign keys i databasen.
 async function deleteUser(req, res) {
   try {
     const userId = req.session.userId;
@@ -157,15 +162,12 @@ async function deleteUser(req, res) {
 
 
 // opdater bruger. bruger her session id til at finde brugeren, som er den bruger der er logget ind.
-
 async function updateUser(req, res) {
   try {
     const userId = req.session.userId;
     const password = req.body.password;
-    console.log("userId: ", userId);
-    console.log("password: ", password);
+    // set nu det nye password i stedet for det gamle, på den bruger der er logget ind.
     await executeSQL(`UPDATE users SET password = ${password} WHERE user_id = ${userId}`);
-    console.log(`UPDATE users SET password = ${password} WHERE user_id = ${userId}`);
     res.json({ success: true });
   } catch (error) {
     console.log(error);
@@ -189,5 +191,5 @@ module.exports = {
   updateUser,
 };
 
-
+ 
 
