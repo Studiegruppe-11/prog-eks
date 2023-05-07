@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", async () => {
 
-
-
+  // laver 30 p tags i DOM, som vi kan indsætte data i.
   for (let i = 0; i < 30; i++) {
     const p = document.createElement('p');
     p.id = `vejrData${i}`;
@@ -9,14 +8,15 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-// fetcher data fra DB
+  // fetcher data fra DB
   async function getData() {
     let obj;
 
     let key = await fetch("key.json");
     key = await key.json();
 
-    const res = await fetch(`http://localhost:3000/historiskVejrData`); 
+    // hent data fra vores eget API. 
+    const res = await fetch(`http://localhost:3000/historiskVejrData`);
 
     obj = await res.json();
 
@@ -28,16 +28,16 @@ window.addEventListener("DOMContentLoaded", async () => {
   let data = await getData();
 
 
-// indsætter temperaturne, dato og vejriconer i DOM
+  // indsætter temperaturne, dato og vejriconer i DOM
   for (let i = 1; i < 30; i++) {
-    
+
     let key = i.toString();
     document.getElementById(`vejrData${i}`).innerHTML = data[key].temp + "°" + " " + data[key].date + " " + data[key].icon;
     checkLastWord(i);
 
   }
 
-}); 
+});
 
 
 // trimmer icon fra db og indsætter icon. 
@@ -47,7 +47,8 @@ function checkLastWord(i) {
   var words = text.split(" ");
   var lastWord = words[words.length - 1];
   var newIcon = "";
-  
+
+  // indsætter iconer ud fra vejrkoden. 
   if (lastWord == "rain") {
     newIcon = '<iconify-icon icon="wi:rain" class="weathertypeicon"></iconify-icon>';
   } else if (lastWord == "clear-day") {
@@ -57,7 +58,8 @@ function checkLastWord(i) {
   } else if (lastWord == "cloudy") {
     newIcon = '<iconify-icon icon="ic:twotone-wb-cloudy"></iconify-icon>';
   }
-  
+
+  // hvis der er et icon, så indsæt det.
   if (newIcon != "") {
     words[words.length - 1] = newIcon;
     var newText = words.join(" ");

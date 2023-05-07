@@ -1,8 +1,8 @@
 // controllers/executeSQL.js
 
-// Hele dette dokument bruges til at håndtere forbindelsen til databasen og udføre SQL-queries. Så jeg i andre routes kan kalde på denne fil og udføre SQL-queries
+// Hele dette dokument bruges til at håndtere forbindelsen til databasen og udføre SQL-queries,
+// så jeg i andre routes kan kalde på denne fil og udføre SQL-queries
 // taget fra Hait.cbss.dk
-
 const Connection = require("tedious").Connection;
 const Request = require("tedious").Request;
 
@@ -58,4 +58,5 @@ const executeSQL = (query) => {
   });
 };
 
+// eksporter funktionen, så den kan bruges af andre moduler
 module.exports = { executeSQL };

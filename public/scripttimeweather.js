@@ -32,17 +32,13 @@ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric
 document.getElementById("date").innerHTML = currentDate.toLocaleDateString("da-DA", options);
 
 
-
-
-
-
-
-
+// følgende kode viser vejrudsigten for de næste 7 dage.
 window.addEventListener("DOMContentLoaded", async () => {
 
     async function getData() {
         let obj;
 
+        // hent data fra vores eget API.
         const res = await fetch('http://localhost:3000/weatherForecast')
 
         obj = await res.json();
@@ -120,10 +116,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 // Følgende kode, sætter ugedagen ind i html'en i vejrudsigten.
-
-
-
-// Bedre kode
 const weekday = ["SØN", "MAN", "TIR", "ONS", "TOR", "FRE", "LØR"];
 
 for (let i = 0; i < 7; i++) {

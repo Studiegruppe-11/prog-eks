@@ -1,4 +1,5 @@
 
+// user.route.js i mappen routes. 
 const express = require("express");
 const router = express.Router();
 const { login, create, getAllUsers, getLoggedInUser, logout, getFavorites, saveFavorites, saveReadArticles, getReadArticles, deleteUser, updateUser } = require("../controllers/users.controller.js");
@@ -19,7 +20,7 @@ router.get("/users", getAllUsers);
 // login og gem navn
 router.get("/loggedIn", getLoggedInUser);
 
-// log ud
+// log ud 
 router.post("/logout", logout);
 
 // endpoint til at se brugerens favoritter
