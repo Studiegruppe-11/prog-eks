@@ -1,4 +1,4 @@
-// public/scriptnews.js
+// scriptnews.js i mappen public. 
 
 window.addEventListener("DOMContentLoaded", async () => {
   async function getData() {

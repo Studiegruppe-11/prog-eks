@@ -1,3 +1,4 @@
+// users.controller.js i mappen controllers. 
 // bruges i forbindelse med SQL forspørgsler.
 const { executeSQL } = require('../controllers/executeSQL.js');
 

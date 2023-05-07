@@ -1,4 +1,4 @@
-
+// manage.js i mappe public. 
 // hvis der klikkes på slet bruger knappen, så slettes brugeren.
 document.getElementById("delete").addEventListener('click', (event) => {
     event.preventDefault();
