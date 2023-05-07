@@ -63,7 +63,6 @@ const requestQueue = []; // Kø til at håndtere SQL-forespørgsler
 
 // Funktion til at indsætte en enkelt nyhedsartikel i databasen
 async function insertNewsData(article) {
-  console.log(article);
   if (
     !article.image ||
     article.image.trim() === "" ||
