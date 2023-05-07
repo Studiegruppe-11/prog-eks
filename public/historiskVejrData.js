@@ -1,3 +1,4 @@
+// historiskevejrdata.js i mappen public. 
 window.addEventListener("DOMContentLoaded", async () => {
 
   // laver 30 p tags i DOM, som vi kan indsætte data i.

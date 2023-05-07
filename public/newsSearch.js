@@ -1,4 +1,4 @@
-// /public/newsSearch.js;
+// newsSearch.js i mappe public.
 const articleCardTemplate = document.querySelector("[data-article-template]");
 const articleCardContainer = document.querySelector(".user-cards");
 const searchInput = document.querySelector("#searchbar");

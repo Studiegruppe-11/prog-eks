@@ -1,3 +1,4 @@
+// scripttimeweather.js i mappen public. 
 //Følgende kode viser den nuværende tid og opdaterer hvert 500ms
 // taget fra https://stackoverflow.com/questions/18229022/how-to-show-current-time-in-javascript-in-the-format-hhmmss
 function checkTime(i) {

@@ -1,3 +1,4 @@
+// news.route.js i mappen routes. 
 const express = require("express");
 const router = express.Router();
 const { getAllNews, getSingleNews } = require("../controllers/news.controller.js");
