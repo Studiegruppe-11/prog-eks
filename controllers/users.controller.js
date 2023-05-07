@@ -1,7 +1,7 @@
 // users.controller.js i mappen controller
 // skal bruges til at udføre SQL-queries
 const { executeSQL } = require("./executeSQL.js");
-
+ 
 // undersøg om login er korrekt.
 async function login(req, res) {
   const { username, password } = req.body;

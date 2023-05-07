@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 // undersøg om login er korrekt.
 router.post("/users/login", bodyParser.json(), login);
 
-// opret bruger
+// opret bruger 
 // Får data fra opret.js og sender det til databasen.
 router.post("/users/create", bodyParser.json(), create);
 
