@@ -10,6 +10,7 @@ require("dotenv").config({ path: "../.env" }); // Indlæser konfigurationsvariab
 const config = require("../database/config.js"); // Indlæser databasens konfigurationsfil
 const apiKey = process.env.news1; // Indlæser API-nøglen fra .env-filen
 const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${apiKey}`;
+console.log(url);
 
 const connection = new Connection(config); // Opretter en ny forbindelse til SQL-databasen
 
@@ -63,7 +64,11 @@ const requestQueue = [];
 
 // Funktion til at indsætte en enkelt nyhedsartikel i databasen
 async function insertNewsData(article) {
-  if (!article.urlToImage) {
+  if (
+    !article.urlToImage ||
+    article.urlToImage.trim() === "" ||
+    article.urlToImage.trim().toLowerCase() === "null"
+  ) {
     // Spring over artikler uden billeder
     console.log("Springer artikel uden billede over:", article.title);
     return;
@@ -75,6 +80,8 @@ async function insertNewsData(article) {
       INSERT INTO News (title, author, description, url, publishedAt, content, imageUrl)
       VALUES (@title, @author, @description, @url, @publishedAt, @content, @imageUrl);
     `;
+
+    console.log(insertQuery);
 
     // Opretter en ny SQL-forespørgsel og håndterer dens resultater
     const request = new Request(insertQuery, (err) => {
