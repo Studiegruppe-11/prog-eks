@@ -1,6 +1,6 @@
+// news.controller.js i mappen controllers.
+
 const { executeSQL } = require("../controllers/executeSQL.js");
-
-
 
 // hent alle nyheder fra databasen
 async function getAllNews(req, res) {

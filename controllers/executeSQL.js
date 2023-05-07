@@ -1,4 +1,4 @@
-// controllers/executeSQL.js
+// executeSQL.js i mappen controllers. 
 
 // Hele dette dokument bruges til at håndtere forbindelsen til databasen og udføre SQL-queries,
 // så jeg i andre routes kan kalde på denne fil og udføre SQL-queries
