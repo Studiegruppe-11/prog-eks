@@ -9,6 +9,6 @@ router.get("/news", getAllNews);
 router.get("/news/:newsIdClick", getSingleNews);
  
 // eksporter routeren så den kan bruges i app.js
-module.exports = router;
+module.exports = router; 
 
  
