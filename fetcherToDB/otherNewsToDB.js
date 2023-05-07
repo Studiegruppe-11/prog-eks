@@ -69,8 +69,6 @@ async function insertNewsData(article) {
   }
 
   return new Promise((resolve, reject) => {
-    const imageUrl = article.image.split("?")[0]; // Fjerner eventuelle forespørgselsparametre fra billed-URL'en
-
     // SQL-forespørgslen til at indsætte en artikel i databasen
     const insertQuery = `
             INSERT INTO News (title, author, description, url, publishedAt, imageUrl)
