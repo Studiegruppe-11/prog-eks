@@ -1,3 +1,4 @@
+// newsToDB.js i fetcherToDB mappen
 // Importer nødvendige biblioteker
 const cron = require("node-cron"); // Benyttes til at planlægge opgaver
 const axios = require("axios"); // Benyttes til at foretage HTTP-anmodninger
