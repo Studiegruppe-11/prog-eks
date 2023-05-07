@@ -1,4 +1,4 @@
-
+// readArticles.js i mappen public. 
 window.addEventListener("DOMContentLoaded", async () => {
     // hvis brugeren er logget ind
         const response = await fetch('/loggedIn');

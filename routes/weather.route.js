@@ -1,3 +1,4 @@
+// weather.route.js i mappen routes. 
 // Importer Express og opret en router
 const express = require('express');
 const router = express.Router();

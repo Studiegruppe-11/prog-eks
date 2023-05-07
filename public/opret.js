@@ -1,4 +1,4 @@
-// public/opret.js
+// opret.js i mappe public.
 
 // hvis alle felter er udfyldt gemmes brugeroplysninger i variable.
 // derefter fetches de til enpoint /users/create så de kan bruges i users.route.js
