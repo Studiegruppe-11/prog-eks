@@ -73,8 +73,6 @@ async function fetchWeatherDataAndInsert() {
   }
 }
 
-// Run the function to fetch and insert weather data
-
 // Sat til at køre kl 13 hver dag
 cron.schedule("0 13 * * *", () => {
   fetchWeatherDataAndInsert();

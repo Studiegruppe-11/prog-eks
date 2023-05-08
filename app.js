@@ -6,7 +6,7 @@ const app = express();
 require("dotenv").config();
 
 // Importer body-parser modulet for at analysere JSON-data i anmodningens krop
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -22,27 +22,42 @@ app.use(
   })
 );
 
+// Middleware funktion til at håndtere CORS
+app.use((req, res, next) => {
+  // Sætter tilladte oprindelsesdomæner for CORS i headeren
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "http://localhost:3000, http://127.0.0.1:3000"
+  );
+  // Sætter tilladte headers for CORS i headeren
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  // Kalder næste middleware i rækken
+  next();
+});
+
 // Importer ruter til bruger, nyheder og vejr fra separate filer
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
-// Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00. 
-const newsToDB = require("./fetcherToDB/newsToDB");
-const otherNewsToDB = require("./fetcherToDB/otherNewsToDB");
-const weatherToDB = require("./fetcherToDB/weatherToDB30");
-const forecastToDB = require("./fetcherToDB/forecastToDB");
+// Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00.
+require("./fetcherToDB/newsToDB");
+require("./fetcherToDB/otherNewsToDB");
+require("./fetcherToDB/weatherToDB30");
+require("./fetcherToDB/forecastToDB");
 
 // Tilføj ruter til Express appen
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
 app.use("/", weatherRoutes);
 
-// Lyt på port 3000 og console.log en besked, når serveren er startet. 
+// Lyt på port 3000 og console.log en besked, når serveren er startet.
 app.listen(3000, () => {
   console.log("App listening on port 3000");
 });
-
 
 // Konfigurer Express appen til at servere statiske filer fra public mappen, som indeholder index.html filen
 app.use(express.static("public"));
