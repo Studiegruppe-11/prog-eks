@@ -100,11 +100,3 @@ searchInput.addEventListener("input", (event) => {
       });
   }
 });
-
-// Udkommenteret da der ikke er grund til den fetcher før user input
-// // Hent nyhedsdata fra serveren og opdater artikelkort
-// fetch(`http://localhost:3001/search?query=${searchQuery}`)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     newsData = Object.values(data);
-//   });
