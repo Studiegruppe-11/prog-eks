@@ -28,7 +28,7 @@ const filterAndUpdateArticles = (searchQuery) => {
     const author = article.author && article.author.toLowerCase();
     const description =
       article.description && article.description.toLowerCase(); // newsSearch.js
-
+    // Returnerer true hvis artiklen indeholder søgeordet i titlen, forfatteren eller beskrivelsen
     return (
       title.includes(searchQuery.toLowerCase()) ||
       (author && author.includes(searchQuery.toLowerCase())) ||
