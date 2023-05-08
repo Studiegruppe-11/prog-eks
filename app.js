@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
-const searchRoutes = require("./routes/searchRoutes");
+const searchRoutes = require("./routes/search.route");
 
 // Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00.
 require("./fetcherToDB/newsToDB");
