@@ -1,7 +1,7 @@
 // users.controller.js i mappen controller
 // skal bruges til at udføre SQL-queries
 const { executeSQL } = require("./executeSQL.js");
- 
+
 // undersøg om login er korrekt.
 async function login(req, res) {
   const { username, password } = req.body;
@@ -158,7 +158,7 @@ async function deleteUser(req, res) {
     console.log(error);
     res.status(500).send(error.message);
   }
-} 
+}
 
 
 // opdater bruger. bruger her session id til at finde brugeren, som er den bruger der er logget ind.
@@ -191,5 +191,5 @@ module.exports = {
   updateUser,
 };
 
- 
+
 
