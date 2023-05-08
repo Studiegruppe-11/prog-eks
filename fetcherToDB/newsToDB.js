@@ -10,7 +10,6 @@ require("dotenv").config({ path: "../.env" }); // Indlæser konfigurationsvariab
 const config = require("../database/config.js"); // Indlæser databasens konfigurationsfil
 const apiKey = process.env.news1; // Indlæser API-nøglen fra .env-filen
 const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${apiKey}`;
-console.log(url);
 
 const connection = new Connection(config); // Opretter en ny forbindelse til SQL-databasen
 
