@@ -31,7 +31,7 @@ router.post("/favorites", bodyParser.json(), saveFavorites);
 // gem user_id og news_id i read_articles
 router.post("/readArticles", bodyParser.json(), saveReadArticles);
 
-
+ 
 // find alle artikler en bruger har læst
 router.get("/readArticles", getReadArticles);
 
