@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  
+
   // hvis man klikker på billedet på en nyhed skal den åbne i et nyt vindue og vise artiklen
   for (let i = 0; i < 7; i++) {
     document

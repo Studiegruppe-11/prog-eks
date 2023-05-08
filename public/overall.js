@@ -41,3 +41,4 @@ document.getElementById("logout").addEventListener("click", (event) => {
     })
     .catch((error) => console.log(error));
 });
+ 
