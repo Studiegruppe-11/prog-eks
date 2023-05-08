@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     async function getData() {
         let obj;
 
-        // hent data fra vores eget API.
+        // hent data fra vores endpoint
         const res = await fetch('http://localhost:3000/weatherForecast')
 
         obj = await res.json();
@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     let data = await getData();
 
-    
+
     // indsæt dagens temperatur i html. 
     let temp = data[1].temperature;
     document.getElementById("temp").innerHTML = temp + "°";
@@ -59,22 +59,22 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     // indsæt solopgang og solnedgang i html.
     const sunriseDate = new Date(data[1].sunrise);
-    document.getElementById("sunrise").innerHTML = sunriseDate.toLocaleTimeString('da-DK', {hour: '2-digit', minute:'2-digit'});    
+    document.getElementById("sunrise").innerHTML = sunriseDate.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
 
     const sunsetDate = new Date(data[1].sunset);
-    document.getElementById("sunset").innerHTML = sunsetDate.toLocaleTimeString('da-DK', {hour: '2-digit', minute:'2-digit'});    
+    document.getElementById("sunset").innerHTML = sunsetDate.toLocaleTimeString('da-DK', { hour: '2-digit', minute: '2-digit' });
 
-    
+
 
 
     for (let i = 1; i < 8; i++) {
 
         // indsæt temperaturer i vejrudsigten. 
         document.getElementById("day" + (i)).innerHTML = data[i].temperature + "°"
-    
+
         // indsæt icon i vejrudsigten
 
-        let code = data[i].weathercode; 
+        let code = data[i].weathercode;
 
         if (code === 0) {  // Hvis koden er mindre end 3 så er det sol.
 
@@ -122,7 +122,7 @@ const weekday = ["SØN", "MAN", "TIR", "ONS", "TOR", "FRE", "LØR"];
 for (let i = 0; i < 7; i++) {
     document.getElementById("weekday" + i).innerHTML = weekday[(new Date().getDay() + i) % 7];
 }
- 
+
 
 
 
