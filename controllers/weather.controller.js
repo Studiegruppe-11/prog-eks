@@ -12,7 +12,7 @@ async function getWeatherForecast(req, res) {
     res.status(500).send('Internal server error');
   }
 }
-
+ 
 // henter alt fra historiskevejrdata tabellen som vi bruger til at se historisk vejr
 async function getHistoriskVejrData(req, res) {
   try {
