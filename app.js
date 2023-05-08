@@ -44,10 +44,10 @@ const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 
 // Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00.
-const newsToDB = require("./fetcherToDB/newsToDB");
-const otherNewsToDB = require("./fetcherToDB/otherNewsToDB");
-const weatherToDB = require("./fetcherToDB/weatherToDB30");
-const forecastToDB = require("./fetcherToDB/forecastToDB");
+require("./fetcherToDB/newsToDB");
+require("./fetcherToDB/otherNewsToDB");
+require("./fetcherToDB/weatherToDB30");
+require("./fetcherToDB/forecastToDB");
 
 // Tilføj ruter til Express appen
 app.use("/", newsRoutes);
