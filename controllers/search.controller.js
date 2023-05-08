@@ -8,22 +8,24 @@ exports.performSearch = async (req, res) => {
 
   try {
     await client.connect();
-
-    // Replace with your actual database query
+    // Erstat med din faktiske database forespørgsel
     const searchResult = await client.query(`
-      SELECT * FROM dbo.News
-      WHERE LOWER(title) LIKE LOWER('%${searchQuery}%')
-      OR LOWER(author) LIKE LOWER('%${searchQuery}%')
-      OR LOWER(description) LIKE LOWER('%${searchQuery}%')
-    `);
+  SELECT * FROM dbo.News
+  WHERE LOWER(title) LIKE LOWER('%${searchQuery}%')
+  OR LOWER(author) LIKE LOWER('%${searchQuery}%')
+  OR LOWER(description) LIKE LOWER('%${searchQuery}%')
+`);
 
+    // Send resultatet med statuskode 200
     res.status(200).json(searchResult.recordset);
   } catch (err) {
     console.error(err);
+    // Send fejlbesked med statuskode 500, hvis der opstår en fejl
     res
       .status(500)
-      .json({ error: "An error occurred while searching the database" });
+      .json({ error: "Der opstod en fejl under søgning i databasen" });
   } finally {
+    // Luk forbindelsen til databasen
     await client.close();
   }
 };
