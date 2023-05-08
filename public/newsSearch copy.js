@@ -58,7 +58,7 @@ const filterAndUpdateArticles = (searchQuery) => {
       modal.style.display = "block";
       modalTitle.innerHTML = article.title;
       modalTxt.innerHTML = article.description;
-      modalImg.src = article.imageurl;
+      modalImg.src = article.imageUrl;
       modalSrc.innerHTML = article.author;
 
       // Ryd søgefeltet og skjul kortcontaineren
@@ -84,27 +84,18 @@ const filterAndUpdateArticles = (searchQuery) => {
 
 // Filtrer nyhedsdata og opdater artikelkort, når brugeren skriver i søgefeltet
 searchInput.addEventListener("input", (event) => {
+  articleCardContainer.style.display = "block";
   const searchQuery = event.target.value;
+  filterAndUpdateArticles(searchQuery);
   if (searchQuery === "") {
     articleCardContainer.style.display = "none";
-  } else {
-    articleCardContainer.style.display = "block";
-    axios
-      .get(`http://localhost:3000/search?query=${searchQuery}`)
-      .then((response) => {
-        newsData = Object.values(response.data);
-        filterAndUpdateArticles(searchQuery);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
   }
 });
 
-// Udkommenteret da der ikke er grund til den fetcher før user input
-// // Hent nyhedsdata fra serveren og opdater artikelkort
-// fetch(`http://localhost:3001/search?query=${searchQuery}`)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     newsData = Object.values(data);
-//   });
+// Hent nyhedsdata fra serveren og opdater artikelkort
+fetch("http://localhost:3000/news")
+  .then((response) => response.json())
+  .then((data) => {
+    newsData = Object.values(data);
+    filterAndUpdateArticles("");
+  });
