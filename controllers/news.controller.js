@@ -63,7 +63,7 @@ async function getSingleNews(req, res) {
 
         document.getElementById("emailBtn").addEventListener("click", function() {
 
-          window.open("mailto:?subject=Se denne nyhed&body= Se denne artikel, som jeg lige har læst. ${url}");
+          window.open("mailto:?subject=Se denne nyhed&body= Hej, jeg vil gerne dele denne artikel med dig, som jeg selv lige har læst. ${url}");
 
         });
       

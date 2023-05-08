@@ -128,12 +128,10 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // hvis man klikker på billedet på en nyhed skal den åbne i et nyt vindue og vise artiklen
   for (let i = 0; i < 7; i++) {
-    document
-      .getElementById(`imgnews${i}`)
-      .addEventListener("click", async () => {
-        let newsIdClick = data[antalNyheder - 7 + i].news_id;
+    document.getElementById(`imgnews${i}`).addEventListener("click", async () => {
+      let newsIdClick = data[antalNyheder - 7 + i].news_id;
 
-        window.open(`/news/${newsIdClick}`, "_blank");
-      });
+      window.open(`/news/${newsIdClick}`, "_blank");
+    });
   }
 });

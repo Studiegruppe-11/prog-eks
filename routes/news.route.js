@@ -7,8 +7,7 @@ const { getAllNews, getSingleNews } = require("../controllers/news.controller.js
 router.get("/news", getAllNews);
 // hent en enkelt nyhed ud fra news_id. 
 router.get("/news/:newsIdClick", getSingleNews);
- 
-// eksporter routeren så den kan bruges i app.js
-module.exports = router; 
 
- 
+// eksporter routeren så den kan bruges i app.js
+module.exports = router;
+
