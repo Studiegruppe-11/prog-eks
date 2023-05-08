@@ -48,7 +48,6 @@ async function run() {
 async function fetchNewsData() {
   // URL til mediastack API-endepunktet
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&language=en&limit=10`;
-  console.log(url);
 
   // Sender en HTTP GET-anmodning til mediastack API
   const response = await axios.get(url);
@@ -125,7 +124,6 @@ function executeNextRequest() {
     connection.execSql(requestQueue[0]);
   }
 }
-
 
 // Planlægger run() til at køre dagligt kl. 12:59:55
 cron.schedule("55 59 12 * * *", () => {
