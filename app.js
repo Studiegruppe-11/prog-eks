@@ -22,23 +22,21 @@ app.use(
   })
 );
 
-// ##### CORS START #####
-
-// Lavet for at gå uden om CORS
-// Ideelt set (sikkerhedsmæssigt) skal det være en whitelist med tilladte domæner, men vi har tilføjet alle for simplicitet
+// Middleware funktion til at håndtere CORS
 app.use((req, res, next) => {
+  // Sætter tilladte oprindelsesdomæner for CORS i headeren
   res.setHeader(
     "Access-Control-Allow-Origin",
     "http://localhost:3000, http://127.0.0.1:3000"
   );
+  // Sætter tilladte headers for CORS i headeren
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  // Kalder næste middleware i rækken
   next();
 });
-
-// ##### CORS SLUT #####
 
 // Importer ruter til bruger, nyheder og vejr fra separate filer
 const newsRoutes = require("./routes/users.route");
