@@ -158,7 +158,7 @@ async function deleteUser(req, res) {
     console.log(error);
     res.status(500).send(error.message);
   }
-}
+} 
 
 
 // opdater bruger. bruger her session id til at finde brugeren, som er den bruger der er logget ind.
