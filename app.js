@@ -1,6 +1,8 @@
 // Importer Express frameworket og opret en instans af Express applikationen
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const { client } = require("mssql");
 
 // Hent miljøvariabler fra .env filen
 require("dotenv").config();
@@ -42,6 +44,7 @@ app.use((req, res, next) => {
 const newsRoutes = require("./routes/users.route");
 const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
+const searchRoutes = require("./routes/search.route");
 
 // Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00.
 require("./fetcherToDB/newsToDB");
@@ -49,10 +52,11 @@ require("./fetcherToDB/otherNewsToDB");
 require("./fetcherToDB/weatherToDB30");
 require("./fetcherToDB/forecastToDB");
 
-// Tilføj ruter til Express appen
+// Tilføj router til Express appen
 app.use("/", newsRoutes);
 app.use("/", userRoutes);
 app.use("/", weatherRoutes);
+app.use("/search", searchRoutes);
 
 // Lyt på port 3000 og console.log en besked, når serveren er startet.
 app.listen(3000, () => {
