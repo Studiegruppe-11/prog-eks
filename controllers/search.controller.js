@@ -5,13 +5,12 @@ const mssql = require("mssql");
 // Importer databasens konfigurationsfil
 const config = require("../database/config.js");
 
-// Eksporter funktionen performSearch
-exports.performSearch = async (req, res) => {
+performSearch = async (req, res) => {
   // Hent søgeforespørgslen fra forespørgslens query parametre
   const searchQuery = req.query.query;
 
   // Opret en ny forbindelsespool ved hjælp af konfigurationsobjektet
-  const client = new mssql.ConnectionPool(config);
+  const client = new mssql.ConnectionPool(config); 
 
   try {
     // Opret forbindelse til databasen
@@ -40,3 +39,7 @@ exports.performSearch = async (req, res) => {
     await client.close();
   }
 };
+
+
+// Eksporter funktionen performSearch
+module.exports = { performSearch };

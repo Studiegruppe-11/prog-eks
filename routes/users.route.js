@@ -12,7 +12,7 @@ router.post("/users/login", bodyParser.json(), login);
 // opret bruger 
 // Får data fra opret.js og sender det til databasen.
 router.post("/users/create", bodyParser.json(), create);
-
+ 
 // Se alle brugere
 router.get("/users", getAllUsers);
 

@@ -63,7 +63,7 @@ async function fetchWeatherDataAndInsert() {
         request.on("requestCompleted", () => resolve());
         request.on("error", (error) => reject(error));
         connection.execSql(request);
-      });
+      }); 
     }
 
     // Bekræft, at alle vejrdata er indsat i databasen
@@ -75,5 +75,7 @@ async function fetchWeatherDataAndInsert() {
 
 // Sat til at køre kl 13 hver dag
 cron.schedule("0 13 * * *", () => {
-  fetchWeatherDataAndInsert();
+  fetchWeatherDataAndInsert(); 
 });
+
+
