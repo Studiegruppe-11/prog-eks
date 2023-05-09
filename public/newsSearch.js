@@ -105,3 +105,4 @@ searchInput.addEventListener("input", (event) => {
       });
   }
 });
+ 
