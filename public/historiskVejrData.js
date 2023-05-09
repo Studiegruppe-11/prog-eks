@@ -8,13 +8,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.body.appendChild(p);
   }
 
-
   // fetcher data fra DB
   async function getData() {
     let obj;
-
-    let key = await fetch("key.json");
-    key = await key.json();
 
     // hent data fra vores eget API. 
     const res = await fetch(`http://localhost:3000/historiskVejrData`);
