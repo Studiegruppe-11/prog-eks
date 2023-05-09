@@ -46,7 +46,7 @@ const filterAndUpdateArticles = (searchQuery) => {
     const header = card.querySelector("[data-header]");
     const body = card.querySelector("[data-body]");
 
-    header.textContent = "No search results";
+    header.textContent = "Ingen søgeresultater";
     body.textContent = "";
 
     // Fjern klikbarhed fra kortet og tilføj klassen "single-result"
