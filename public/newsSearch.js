@@ -38,7 +38,7 @@ const filterAndUpdateArticles = (searchQuery) => {
   // Ryd tidligere filtrerede artikler
   articleCardContainer.innerHTML = "";
 
-  // If no articles are found, create a single card with "no search results"
+  // Hvis ingen artikler matcher søgeordet, vises en besked i stedet for en artikels info
   if (filteredNews.length === 0) {
     const card = articleCardTemplate.content
       .cloneNode(true)
@@ -49,7 +49,7 @@ const filterAndUpdateArticles = (searchQuery) => {
     header.textContent = "No search results";
     body.textContent = "";
 
-    // Remove the event listener for the card
+    // Fjern klikbarhed fra kortet og tilføj klassen "single-result"
     card.onclick = null;
     articleCardContainer.appendChild(card);
     articleCardContainer.classList.add("single-result");
@@ -65,6 +65,7 @@ const filterAndUpdateArticles = (searchQuery) => {
       header.textContent = article.title;
       body.textContent = article.author;
 
+      // Åben modalen og vis artiklens info, når brugeren klikker på kortet
       card.addEventListener("click", () => {
         const modalSrc = document.getElementById("modalSrc");
         const modalTitle = document.getElementById("modalTitle");
@@ -73,7 +74,7 @@ const filterAndUpdateArticles = (searchQuery) => {
         modal.style.display = "block";
         modalTitle.innerHTML = article.title;
         modalTxt.innerHTML = article.description;
-        modalImg.src = article.imageurl;
+        modalImg.src = article.imageUrl;
         modalSrc.innerHTML = article.author;
 
         // Ryd søgefeltet og skjul kortcontaineren
@@ -86,7 +87,7 @@ const filterAndUpdateArticles = (searchQuery) => {
   }
 };
 
-// Filtrer nyhedsdata og opdater artikelkort, når brugeren skriver i søgefeltet
+// Opdater artiklerne, når brugeren skriver i søgefeltet. Hvis søgefeltet er tomt, skjules kortcontainere. Hvis søgefeltet ikke er tomt, vises kortcontaineren og artiklerne opdateres.
 searchInput.addEventListener("input", (event) => {
   const searchQuery = event.target.value;
   if (searchQuery === "") {
