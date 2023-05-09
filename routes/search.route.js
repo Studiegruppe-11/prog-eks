@@ -1,3 +1,4 @@
+// search.route i routes
 // Importer nødvendige moduler
 const express = require("express");
 const searchController = require("../controllers/search.controller");
