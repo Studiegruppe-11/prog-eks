@@ -174,7 +174,7 @@ async function updateUser(req, res) {
     res.status(500).send(error.message);
   }
 }
-
+ 
 
 // eksporter funktionerne til brug i routes.js
 module.exports = {
