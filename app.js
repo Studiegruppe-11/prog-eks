@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const session = require("express-session");
 
 // Tilføj session middleware til Express appen
+// https://www.npmjs.com/package/express-session
 app.use(
   session({
     secret: "my-secret-key",

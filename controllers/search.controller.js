@@ -21,7 +21,7 @@ performSearch = async (req, res) => {
       SELECT * FROM dbo.News
       WHERE LOWER(title) LIKE LOWER('%${searchQuery}%')
       OR LOWER(author) LIKE LOWER('%${searchQuery}%')
-      OR LOWER(description) LIKE LOWER('%${searchQuery}%')
+      OR LOWER(description) LIKE LOWER('%${searchQuery}%') 
     `);
 
     // Send søge resultatet tilbage til klienten med statuskode 200
