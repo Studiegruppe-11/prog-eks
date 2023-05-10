@@ -102,4 +102,3 @@ async function fetchWeatherDataAndInsert() {
 cron.schedule("0 14 * * *", () => {
   fetchWeatherDataAndInsert();
 });
-
