@@ -9,7 +9,7 @@ describe('Login', function () {
   it('Skal returnere success hvis brugernavn og adgangskode er rigtig', async function () {
     const req = {
       body: {
-        username: 'gustavzeuthen',
+        username: 'testbruger',
         password: '123'
       },
       session: {}
@@ -29,7 +29,7 @@ describe('Login', function () {
   it('Skal returnere en error hvis brugernavn er rigtigt men forkert adgangskode', async function () {
     const req = {
       body: {
-        username: 'gustavzeuthen',
+        username: 'testbruger',
         password: '456'
       },
       session: {}

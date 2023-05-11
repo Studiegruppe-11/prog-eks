@@ -73,8 +73,8 @@ async function fetchWeatherDataAndInsert() {
   }
 }
 
-// Sat til at køre kl 13 hver dag
-cron.schedule("0 13 * * *", () => {
+// Sat til at køre kl 14 hver dag
+cron.schedule("0 14 * * *", () => {
   fetchWeatherDataAndInsert(); 
 });
 
