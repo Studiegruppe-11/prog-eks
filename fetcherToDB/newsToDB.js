@@ -128,8 +128,8 @@ function executeNextRequest() {
   }
 }
 
-// cron bruger vi til at køre funktionen dagligt kl. 13:00
-cron.schedule("0 13 * * *", () => {
+// cron bruger vi til at køre funktionen dagligt kl. 14:00
+cron.schedule("0 14 * * *", () => {
   run();
 });
 
