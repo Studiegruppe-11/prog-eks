@@ -1,3 +1,6 @@
+-- Følgende SQL-kommandoer viser, hvordan vi har lavet vores tabeller i vores database. 
+
+
 -- Opret tabel news
 CREATE TABLE news (
     news_id INT PRIMARY KEY IDENTITY(1,1),
