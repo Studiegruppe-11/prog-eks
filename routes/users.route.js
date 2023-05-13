@@ -1,7 +1,7 @@
 // user.route.js i mappen routes. 
-const express = require("express");
+const express = require("express"); 
 const router = express.Router();
-const { login, create, getAllUsers, getLoggedInUser, logout, getFavorites, saveFavorites, saveReadArticles, getReadArticles, deleteUser, updateUser } = require("../controllers/users.controller.js");
+const { login, create, /*getAllUsers*/ getLoggedInUser, logout, getFavorites, saveFavorites, saveReadArticles, getReadArticles, deleteUser, updateUser } = require("../controllers/users.controller.js");
 
 // skal bruges for at analysere JSON-data, der sendes i anmodnings krop.
 const bodyParser = require("body-parser");
@@ -13,8 +13,8 @@ router.post("/users/login", bodyParser.json(), login);
 // Får data fra opret.js og sender det til databasen.
 router.post("/users/create", bodyParser.json(), create);
  
-// Se alle brugere
-router.get("/users", getAllUsers);
+// Se alle brugere. Er udkommeret for at at alle ikke kan se alle brugere. Kan gøres aktiv, hvis alle brugere skal ses i forbindelse med videreudvikling.
+// router.get("/users", getAllUsers);
 
 // login og gem navn
 router.get("/loggedIn", getLoggedInUser);
