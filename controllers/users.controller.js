@@ -38,16 +38,16 @@ async function create(req, res) {
   res.json(result);
 };
 
-// Se alle brugere
-async function getAllUsers(req, res) {
-  try {
-    const result = await executeSQL(`SELECT * FROM users `);
-    res.send(result);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
-  }
-};
+// // Se alle brugere. Udkommenteret så alle ikke kan se alle brugere. Kan bruges til at undersøge om brugeren bliver korrekt lagt op i databasen
+// async function getAllUsers(req, res) {
+//   try {
+//     const result = await executeSQL(`SELECT * FROM users `);
+//     res.send(result);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error.message);
+//   }
+// };
 
 // login og gem navn
 async function getLoggedInUser(req, res) {
@@ -180,7 +180,7 @@ async function updateUser(req, res) {
 module.exports = {
   login,
   create,
-  getAllUsers,
+  //getAllUsers,
   getLoggedInUser,
   logout,
   getFavorites,
