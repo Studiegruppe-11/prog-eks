@@ -47,7 +47,7 @@ const userRoutes = require("./routes/news.route");
 const weatherRoutes = require("./routes/weather.route");
 const searchRoutes = require("./routes/search.route");
 
-// Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00.
+// Importer moduler til at hente data fra API'er og gemme dem i databasen. De er sat til at køre hver dag kl 14.00
 require("./fetcherToDB/newsToDB");
 require("./fetcherToDB/otherNewsToDB");
 require("./fetcherToDB/weatherToDB30");
