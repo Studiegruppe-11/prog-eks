@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-// Middleware funktion til at håndtere CORS
+// Middleware funktion til at håndtere CORS. Lavet det nogen af os fik en fejl med CORS, da vi åbnede localhost
 app.use((req, res, next) => {
   // Sætter tilladte oprindelsesdomæner for CORS i headeren
   res.setHeader(
