@@ -38,7 +38,7 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   // Kalder næste middleware i rækken
-  next();
+  next(); // Ikke relevant med next() her, skulle have været i middleware funktionen over
 });
 
 // Importer ruter til bruger, nyheder og vejr fra separate filer
