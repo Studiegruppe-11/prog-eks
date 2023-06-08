@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { client } = require("mssql");
+const { client } = require("mssql"); // Irrelevant at importere denne her, da vi ikke bruger den
 
 // Hent miljøvariabler fra .env filen
 require("dotenv").config();
@@ -54,7 +54,7 @@ require("./fetcherToDB/weatherToDB30");
 require("./fetcherToDB/forecastToDB");
 
 // Tilføj router til Express appen
-app.use("/", newsRoutes);
+app.use("/", newsRoutes); // Vi kunne have defineret de forskellige endpoints her fremfor i routes filerner hver i sær. Ligesom ved seearch routeren
 app.use("/", userRoutes);
 app.use("/", weatherRoutes);
 app.use("/search", searchRoutes);
